@@ -1,0 +1,8 @@
+"This message comes to you from the Mustache Muchacho Holiday Mailer, Greatings and happy holidays "+name
+
+"This message comes to you from the Mustache Muchacho Holiday Mailer, Merry Christmas "+name
+
+"This message comes to you from the Mustache Muchacho Holiday Mailer, Happy Easter "+name
+
+"This message comes to you from the Mustache Muchacho Holiday Mailer, Happy Birthday "+name
+
