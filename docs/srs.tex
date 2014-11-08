@@ -22,9 +22,12 @@ To build a program that stores addresses of friends and relatives and allows the
 
 %\subsection{Software context}
 %The software is placed in a business or product line context. Strategic issues relevant to context are discussed. The intent is for the reader to understand the 'big picture'.
+Consumer grade product that is intuitive for use by the average computer user. The software handles their 'Holiday Letters' for them electronically.
 
 %\subsection{Major constraints}
 %Any business or product line constraints that will impact the manner in which the software is to be specified, designed, implemented or tested are noted here.
+The software will need to be able to run minimally on a consumer grade machine so as to not noticeably impact performance.
+Web connection while running to allow access to the external e-mail servers.
 
 %\section{Usage scenario}
 %This section provides a usage scenario for the software. It organized information collected during requirements elicitation into use-cases.
@@ -32,15 +35,16 @@ To build a program that stores addresses of friends and relatives and allows the
 %\subsection{User profiles}
 %The profiles of all user categories are described here.
 
+
 \subsection{Use-cases}
 %All use-cases for the software are presented.
 \subsubsection*{Use case Add new person to database}
 Actor user \\
-Basic choose to enter new person, enter first name, enter lastname, enter address, enter if and email was sent, submit to database \\
+Basic choose to enter new person, enter first name, enter last name, enter address, enter if and email was sent, submit to database \\
 
-\subsubsection*{Use case Remove new person to database}
+\subsubsection*{Use case Remove person from database}
 Actor user \\
-Basic choose to remove, choose who to remove, make sure, remove\\
+Basic choose to remove, choose who to remove, make sure, remove \\
  
 \subsubsection*{Use case Display entries by last name}
 Actor user \\
@@ -50,6 +54,10 @@ Basic choose to display, choose to display by last name, display \\
 Actor user \\
 Basic choose to display, choose to display by first name, display \\
  
+\subsubsection*{Use case Display entries by last received date}
+Actor user \\
+Basic choose to display, choose to display by last received date, display \\
+
 \subsubsection*{Use case Display entries with last name with certain letter}
 Actor user \\
 Basic choose to display, choose to display by certain letters, display \\
@@ -104,6 +112,15 @@ For this project, we will be using SQLite technology for our data object interac
 
 %\section{Functional Model and Description}
 %A description of each major software function, along with data flow or class hierarchy (OO) is presented.
+The Client class is the main anchor for the program. 
+It contains references to two objects that handle all input from the user and all output to the user. 
+The client will also contain the methods needed to delegate work to the proper objects, i.e. contact creation, contact modification, contact deletion, display
+
+The ContactFactory object will be used to create contacts and will become more complex as as the contacts become more complex.
+The DBAccess object will be used for all interaction with the database.
+The contact class is an object that represents tuples in the database.
+The userOut and userIn objects handle and validate the interactions the program has with the user.
+%Insert Image of UML here
 
 %\subsection{Description for Function n}
 %A detailed description of each software function is presented. Section 4.1 is repeated for each of n functions.
