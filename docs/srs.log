@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.14)  7 NOV 2014 16:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.14)  7 NOV 2014 17:28
 entering extended mode
 **C:/Users/Zach/Holiday-Mailer/docs/srs.tex
 (C:/Users/Zach/Holiday-Mailer/docs/srs.tex
@@ -70,115 +70,201 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks16
 \@floatcapt=\box27
 )
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("E:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("E:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("E:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count89
+\Gm@cntv=\count90
+\c@Gm@tempcnt=\count91
+\Gm@bindingoffset=\dimen105
+\Gm@wd@mp=\dimen106
+\Gm@odd@mp=\dimen107
+\Gm@even@mp=\dimen108
+\Gm@layoutwidth=\dimen109
+\Gm@layoutheight=\dimen110
+\Gm@layouthoffset=\dimen111
+\Gm@layoutvoffset=\dimen112
+\Gm@dimlist=\toks17
+
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
 (C:\Users\Zach\Holiday-Mailer\docs\srs.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 
 ("E:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count89
-\scratchdimen=\dimen105
+\scratchcounter=\count92
+\scratchdimen=\dimen113
 \scratchbox=\box28
-\nofMPsegments=\count90
-\nofMParguments=\count91
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count92
-\MPscratchDim=\dimen106
-\MPnumerator=\count93
-\makeMPintoPDFobject=\count94
-\everyMPtoPDFconversion=\toks18
+\nofMPsegments=\count93
+\nofMParguments=\count94
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count95
+\MPscratchDim=\dimen114
+\MPnumerator=\count96
+\makeMPintoPDFobject=\count97
+\everyMPtoPDFconversion=\toks19
 )
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 11.
+(Font)              <12> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 11.
+(Font)              <8> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 11.
- [1
+(Font)              <6> on input line 12.
+[1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 38--40
+Underfull \hbox (badness 10000) in paragraph at lines 43--45
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--44
+Underfull \hbox (badness 10000) in paragraph at lines 47--49
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--48
+Underfull \hbox (badness 10000) in paragraph at lines 51--53
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--52
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--56
+Underfull \hbox (badness 10000) in paragraph at lines 59--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--64
+Underfull \hbox (badness 10000) in paragraph at lines 67--69
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 66--68
+Underfull \hbox (badness 10000) in paragraph at lines 71--73
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 85.
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 94.
 ("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 94.
 
 <img/db_erd.jpg, id=13, 182.18062pt x 144.54pt>
 File: img/db_erd.jpg Graphic file (type jpg)
  <use img/db_erd.jpg>
-Package pdftex.def Info: img/db_erd.jpg used on input line 98.
+Package pdftex.def Info: img/db_erd.jpg used on input line 107.
 (pdftex.def)             Requested size: 256.0748pt x 203.19267pt.
  [3]
-[4 <C:/Users/Zach/Holiday-Mailer/docs/img/db_erd.jpg>]
-(C:\Users\Zach\Holiday-Mailer\docs\srs.aux) ) 
+Underfull \hbox (badness 10000) in paragraph at lines 116--119
+
+ []
+
+<img/UML.jpg, id=18, 946.28531pt x 431.36156pt>
+File: img/UML.jpg Graphic file (type jpg)
+ <use img/UML.jpg>
+Package pdftex.def Info: img/UML.jpg used on input line 126.
+(pdftex.def)             Requested size: 483.69684pt x 220.49171pt.
+
+Overfull \hbox (13.94182pt too wide) in paragraph at lines 126--127
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--128
+
+ []
+
+[4 <C:/Users/Zach/Holiday-Mailer/docs/img/db_erd.jpg>] [5 <C:/Users/Zach/Holida
+y-Mailer/docs/img/UML.jpg>] (C:\Users\Zach\Holiday-Mailer\docs\srs.aux) ) 
 Here is how much of TeX's memory you used:
- 1213 strings out of 493921
- 16052 string characters out of 3144879
- 67415 words of memory out of 3000000
- 4539 multiletter control sequences out of 15000+200000
+ 1714 strings out of 493921
+ 23570 string characters out of 3144879
+ 82982 words of memory out of 3000000
+ 5023 multiletter control sequences out of 15000+200000
  7895 words of font info for 28 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,19p,267b,217s stack positions out of 5000i,500n,10000p,200000b,50000s
-<E:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmbx10.pfb><E:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmbx12.pfb><E:/Program Files (x86)/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb><E:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr12.pfb><E:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr17.pfb><E:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb>
-Output written on srs.pdf (4 pages, 106518 bytes).
+ 27i,6n,32p,267b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
+<E:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><E:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><E:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><E:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on srs.pdf (5 pages, 270734 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
+ 44 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

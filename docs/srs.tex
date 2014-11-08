@@ -5,6 +5,7 @@
 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage[margin=1in]{geometry}
 
 \begin{document}
 
@@ -20,11 +21,11 @@ To build a program that stores addresses of friends and relatives and allows the
 %\subsection{Statement of scope}
 %A description of the software is presented. Major inputs, processing functionality and outputs are described without regard to implementation detail.
 
-%\subsection{Software context}
+\subsection{Software context}
 %The software is placed in a business or product line context. Strategic issues relevant to context are discussed. The intent is for the reader to understand the 'big picture'.
 Consumer grade product that is intuitive for use by the average computer user. The software handles their 'Holiday Letters' for them electronically.
 
-%\subsection{Major constraints}
+\subsection{Major constraints}
 %Any business or product line constraints that will impact the manner in which the software is to be specified, designed, implemented or tested are noted here.
 The software will need to be able to run minimally on a consumer grade machine so as to not noticeably impact performance.
 Web connection while running to allow access to the external e-mail servers.
@@ -110,19 +111,19 @@ For this project, we will be using SQLite technology for our data object interac
 %\subsubsection{Data dictionary}
 %A reference to the data dictionary is provided. The dictionary is maintained in electronic form.
 
-%\section{Functional Model and Description}
+\section{Functional Model and Description}
 %A description of each major software function, along with data flow or class hierarchy (OO) is presented.
-The Client class is the main anchor for the program. 
-It contains references to two objects that handle all input from the user and all output to the user. 
-The client will also contain the methods needed to delegate work to the proper objects, i.e. contact creation, contact modification, contact deletion, display
+The Client class is the main anchor for the program. \\
+It contains references to two objects that handle all input from the user and all output to the user. \\
+The client will also contain the methods needed to delegate work to the proper objects, i.e. contact creation, contact modification, contact deletion, display \\
 
-The ContactFactory object will be used to create contacts and will become more complex as as the contacts become more complex.
-The DBAccess object will be used for all interaction with the database.
-The contact class is an object that represents tuples in the database.
-The userOut and userIn objects handle and validate the interactions the program has with the user.
+The ContactFactory object will be used to create contacts and will become more complex as as the contacts become more complex. \\
+The DBAccess object will be used for all interaction with the database. \\
+The contact class is an object that represents tuples in the database. \\
+The userOut and userIn objects handle and validate the interactions the program has with the user. \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=90mm]{img/UML.jpg}
+\includegraphics[width=170mm]{img/UML.jpg}
 \caption{UML Diagram of the Software \label{UML}}
 \end{figure}
 
