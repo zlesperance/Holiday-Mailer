@@ -91,6 +91,15 @@ Basic choose to send email to specific people, pick people, pick holiday email t
 
 \section{Functional Model and Description}
 %A description of each major software function, along with data flow or class hierarchy (OO) is presented.
+The Client class is the main anchor for the program. 
+It contains references to two objects that handle all input from the user and all output to the user. 
+The client will also contain the methods needed to delegate work to the proper objects, i.e. contact creation, contact modification, contact deletion, display
+
+The ContactFactory object will be used to create contacts and will become more complex as as the contacts become more complex.
+The DBAccess object will be used for all interaction with the database.
+The contact class is an object that represents tuples in the database.
+The userOut and userIn objects handle and validate the interactions the program has with the user.
+%Insert Image of UML here
 
 \subsection{Description for Function n}
 %A detailed description of each software function is presented. Section 4.1 is repeated for each of n functions.
