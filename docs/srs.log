@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.14)  7 NOV 2014 17:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.14)  7 NOV 2014 17:51
 entering extended mode
 **C:/Users/Zach/Holiday-Mailer/docs/srs.tex
 (C:/Users/Zach/Holiday-Mailer/docs/srs.tex
@@ -169,79 +169,75 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 43--45
+Underfull \hbox (badness 10000) in paragraph at lines 46--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--49
+Underfull \hbox (badness 10000) in paragraph at lines 50--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--53
+Underfull \hbox (badness 10000) in paragraph at lines 54--56
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--57
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--61
+Underfull \hbox (badness 10000) in paragraph at lines 62--64
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--65
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 71--73
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--77
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 94.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
 ("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 94.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
 
 <img/db_erd.jpg, id=13, 182.18062pt x 144.54pt>
 File: img/db_erd.jpg Graphic file (type jpg)
  <use img/db_erd.jpg>
-Package pdftex.def Info: img/db_erd.jpg used on input line 107.
+Package pdftex.def Info: img/db_erd.jpg used on input line 110.
 (pdftex.def)             Requested size: 256.0748pt x 203.19267pt.
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 116--119
-
- []
-
 <img/UML.jpg, id=18, 946.28531pt x 431.36156pt>
 File: img/UML.jpg Graphic file (type jpg)
  <use img/UML.jpg>
-Package pdftex.def Info: img/UML.jpg used on input line 126.
+Package pdftex.def Info: img/UML.jpg used on input line 131.
 (pdftex.def)             Requested size: 483.69684pt x 220.49171pt.
 
-Overfull \hbox (13.94182pt too wide) in paragraph at lines 126--127
+Overfull \hbox (13.94182pt too wide) in paragraph at lines 131--132
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--128
+Underfull \hbox (badness 10000) in paragraph at lines 125--133
 
  []
 
@@ -262,7 +258,7 @@ m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><E:/Program File
 s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><E:/Program Files (
 x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on srs.pdf (5 pages, 270734 bytes).
+Output written on srs.pdf (5 pages, 271678 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
