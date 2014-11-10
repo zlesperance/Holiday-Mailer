@@ -1,4 +1,7 @@
+yahoo:
 email address: m_muchachos@yahoo.com
 password: cscd350password
 
-use for testing
+gmail (for sending from)
+email address: moustachedmuchachos@gmail.com
+password: cscd350password
