@@ -9,7 +9,7 @@ import org.junit.Test;
 public class DBAccessTest {
 
 	@Test
-	public void test() {
+	public void crudTest() {
 		DBAccess db = null;
 		try {
 			db = new DBAccess();
