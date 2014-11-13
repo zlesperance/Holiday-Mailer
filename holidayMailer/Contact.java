@@ -1,3 +1,5 @@
+package holidayMailer;
+
 public class Contact{
    
    private String fName;
