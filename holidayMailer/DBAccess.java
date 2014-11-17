@@ -1,6 +1,7 @@
 package holidayMailer;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DBAccess {
 	private Connection connection = null;
@@ -59,6 +60,128 @@ public class DBAccess {
 		
 		statement.executeUpdate();
 	} // end delete
+	
+	public ArrayList<Contact> getAllContacts () throws SQLException {
+		ArrayList<Contact> contacts = new ArrayList<Contact>();
+		
+		String sql = "SELECT email, firstName, lastName, YEAR(lastReceivedDate) AS lastReceivedDate FROM contacts;";
+		
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		ResultSet results = statement.executeQuery();
+		
+		while (results.next()) {
+			contacts.add(new Contact(results.getString(1), results.getString(2), results.getString(3), results.getInt(4)));
+		}
+		
+		return contacts;
+	} // end getAllContacts
+	
+	public ArrayList<Contact> getPreviousSenders (int yearOffset) throws SQLException {
+		ArrayList<Contact> contacts = new ArrayList<Contact>();
+		
+		String sql = "SELECT email,"
+				+ " firstName,"
+				+ " lastName,"
+				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " FROM contacts"
+				+ " WHERE lastReceivedDate IS NOT NULL"
+				+ " AND YEAR(lastReceivedDate) > YEAR(CURDATE()) - ?;";
+		
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		statement.setInt(1, yearOffset);
+		ResultSet results = statement.executeQuery();
+		
+		while (results.next()) {
+			contacts.add(new Contact(results.getString(1), results.getString(2), results.getString(3), results.getInt(4)));
+		}
+		
+		return contacts;
+	} // end getPreviousSenders
+	
+	public ArrayList<Contact> getPreviousSenders () throws SQLException {
+		ArrayList<Contact> contacts = new ArrayList<Contact>();
+		
+		String sql = "SELECT email,"
+				+ " firstName,"
+				+ " lastName,"
+				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " FROM contacts"
+				+ " WHERE lastReceivedDate IS NOT NULL;";
+		
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		ResultSet results = statement.executeQuery();
+		
+		while (results.next()) {
+			contacts.add(new Contact(results.getString(1), results.getString(2), results.getString(3), results.getInt(4)));
+		}
+		
+		return contacts;
+	} // end getPreviousSenders
+	
+	public ArrayList<Contact> getContactsByName (String firstName, String lastName) throws SQLException {
+		ArrayList<Contact> contacts = new ArrayList<Contact>();
+		
+		String sql = "SELECT email,"
+				+ " firstName,"
+				+ " lastName,"
+				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " FROM contacts"
+				+ " WHERE firstName = ?"
+				+ " AND lastName = ?;";
+		
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		statement.setString(1, firstName);
+		statement.setString(2, lastName);
+		ResultSet results = statement.executeQuery();
+		
+		while (results.next()) {
+			contacts.add(new Contact(results.getString(1), results.getString(2), results.getString(3), results.getInt(4)));
+		}
+		
+		return contacts;
+	} // end getContactsByName
+	
+	public ArrayList<Contact> getContactsByFirstName (String firstName) throws SQLException {
+		ArrayList<Contact> contacts = new ArrayList<Contact>();
+		
+		String sql = "SELECT email,"
+				+ " firstName,"
+				+ " lastName,"
+				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " FROM contacts"
+				+ " WHERE firstName = ?;";
+		
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		statement.setString(1, firstName);
+		ResultSet results = statement.executeQuery();
+		
+		while (results.next()) {
+			contacts.add(new Contact(results.getString(1), results.getString(2), results.getString(3), results.getInt(4)));
+		}
+		
+		return contacts;
+	} // end getContactsByFirstName
+	
+	public ArrayList<Contact> getContactsByLastName (String lastName) throws SQLException {
+		ArrayList<Contact> contacts = new ArrayList<Contact>();
+		
+		String sql = "SELECT email,"
+				+ " firstName,"
+				+ " lastName,"
+				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " FROM contacts"
+				+ " WHERE lastName = ?;";
+		
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		statement.setString(1, lastName);
+		ResultSet results = statement.executeQuery();
+		
+		while (results.next()) {
+			contacts.add(new Contact(results.getString(1), results.getString(2), results.getString(3), results.getInt(4)));
+		}
+		
+		return contacts;
+	} // end getContactsByLastName
 	
 	private void open() throws SQLException {
 		if (this.connection != null) {
