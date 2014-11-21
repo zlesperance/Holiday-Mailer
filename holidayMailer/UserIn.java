@@ -11,7 +11,7 @@ public class UserIn implements iUserIn{
     public UserIn(){
         this.keyIn = new Scanner(System.in);
     }
-
+ 
     public String readName(){
         Boolean exit = false;
         String in;
