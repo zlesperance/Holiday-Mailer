@@ -1,3 +1,5 @@
+package holidayMailer;
+
 /**
  * Creator: Steven Berg
  * Date: 11/20/14

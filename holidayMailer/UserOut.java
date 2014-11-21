@@ -1,3 +1,5 @@
+package holidayMailer;
+
 public class UserOut implements iUserOut {
     public void printString(String msg){
         System.out.println(msg);
