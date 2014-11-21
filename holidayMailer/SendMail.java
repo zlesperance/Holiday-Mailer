@@ -47,7 +47,7 @@ public class SendMail{
 			System.out.println("Done");//for testing only!!!!!!!!!!!!!!!!!!
  
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+			throw  new RuntimeException("Failed to send.");
 		}
 	}
 	
@@ -82,12 +82,12 @@ public class SendMail{
 			System.out.println("Done");//for testing only!!!!!!!!!!!!!!!!!!
  
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException("Failed to send.");
 		}
 	}
 	
 	 //given a first name will search through the database and send to that name
-	   public void sendByFirstName(String name){
+	   public static void sendByFirstName(String name){
 	      DBAccess db = null;
 			try {
 				db = new DBAccess();
@@ -120,7 +120,7 @@ public class SendMail{
 	   }//end sendByFirstName
 	   
 	 //given a last name will search through the database and send to that name
-	   public void sendByLastName(String name){
+	   public static void sendByLastName(String name){
 	      DBAccess db = null;
 			try {
 				db = new DBAccess();
@@ -153,7 +153,7 @@ public class SendMail{
 	   }//end sendByLastName
 	   
 	 //given a first name and last name will search through the database and send to that name
-	   public void sendByName(String nameF,String nameL){
+	   public static void sendByName(String nameF,String nameL){
 	      DBAccess db = null;
 			try {
 				db = new DBAccess();
@@ -186,7 +186,7 @@ public class SendMail{
 	   }//end sendByName
 	   
 	 //gets all previously received from
-	   public void sendByPreviouslyRecived(){
+	   public static void sendByPreviouslyRecived(){
 	      DBAccess db = null;
 			try {
 				db = new DBAccess();
@@ -219,7 +219,7 @@ public class SendMail{
 	   }//end sendByPreviouslyRecived
 	   
 	 //gets all previously received from with years offset
-	   public void sendByPreviouslyRecivedOffset(int yearOffset){
+	   public static void sendByPreviouslyRecivedOffset(int yearOffset){
 	      DBAccess db = null;
 			try {
 				db = new DBAccess();
@@ -251,7 +251,7 @@ public class SendMail{
 				}
 	   }//end sendByPreviouslyRecivedOffset
 	   
-	   public void sendAll(){
+	   public static void sendAll(){
 		      DBAccess db = null;
 				try {
 					db = new DBAccess();
