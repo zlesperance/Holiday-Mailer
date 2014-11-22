@@ -14,24 +14,24 @@ public class DBAccess {
 	
 	public void create(Contact contact) throws SQLException {
 		this.open();
-		String sql = "INSERT INTO contacts (email, firstName, lastName, lastReceivedDate) VALUES (?, ?, ?, ?);";
+		String sql = "INSERT INTO contacts (email, firstName, lastName, lastReceivedYear) VALUES (?, ?, ?, ?);";
 		
 		PreparedStatement statement = this.connection.prepareStatement(sql);
 		statement.setString(1, contact.getAddr());
 		statement.setString(2, contact.getFName());
 		statement.setString(3, contact.getLName());
-		statement.setDate(4, Date.valueOf(contact.getLastRec() + "-01-01"));
+		statement.setInt(4, contact.getLastRec());
 		statement.executeUpdate(); // Will throw a SQLException if contact already exists
 	} // end create
 	
 	public void update(Contact contact) throws SQLException {
 		this.open();
-		String sql = "UPDATE contacts SET firstName = ?, lastName = ?, lastReceivedDate = ? WHERE email = ?;";
+		String sql = "UPDATE contacts SET firstName = ?, lastName = ?, lastReceivedYear = ? WHERE email = ?;";
 		
 		PreparedStatement statement = this.connection.prepareStatement(sql);
 		statement.setString(1, contact.getFName());
 		statement.setString(2, contact.getLName());
-		statement.setDate(3, Date.valueOf(contact.getLastRec() + "-01-01"));
+		statement.setInt(3, contact.getLastRec());
 		statement.setString(4, contact.getAddr());
 		
 		statement.executeUpdate();
@@ -39,13 +39,13 @@ public class DBAccess {
 	
 	public void updateWithKeyChange(Contact contact, String oldKey) throws SQLException {
 		this.open();
-		String sql = "UPDATE contacts SET email = ?, firstName = ?, lastName = ?, lastReceivedDate = ? WHERE email = ?;";
+		String sql = "UPDATE contacts SET email = ?, firstName = ?, lastName = ?, lastReceivedYear = ? WHERE email = ?;";
 		
 		PreparedStatement statement = this.connection.prepareStatement(sql);
 		statement.setString(1, contact.getAddr());
 		statement.setString(2, contact.getFName());
 		statement.setString(3, contact.getLName());
-		statement.setDate(4, Date.valueOf(contact.getLastRec() + "-01-01"));
+		statement.setInt(4, contact.getLastRec());
 		statement.setString(5, oldKey);
 		
 		statement.executeUpdate();		
@@ -64,7 +64,7 @@ public class DBAccess {
 	public ArrayList<Contact> getAllContacts () throws SQLException {
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
-		String sql = "SELECT firstName, lastName, email, lastReceivedDate FROM contacts;";
+		String sql = "SELECT firstName, lastName, email, lastReceivedYear FROM contacts;";
 		
 		PreparedStatement statement = this.connection.prepareStatement(sql);
 		ResultSet results = statement.executeQuery();
@@ -83,10 +83,10 @@ public class DBAccess {
 				+ " firstName,"
 				+ " lastName,"
 				+ " email,"
-				+ " lastReceivedDate"
+				+ " lastReceivedYear"
 				+ " FROM contacts"
-				+ " WHERE lastReceivedDate IS NOT NULL"
-				+ " AND YEAR(lastReceivedDate) > YEAR(CURDATE()) - ?;";
+				+ " WHERE lastReceivedYear IS NOT NULL"
+				+ " AND lastReceivedYear > YEAR(CURDATE()) - ?;";
 		
 		PreparedStatement statement = this.connection.prepareStatement(sql);
 		statement.setInt(1, yearOffset);
@@ -108,7 +108,7 @@ public class DBAccess {
 				+ " email,"
 				+ " lastReceivedDate"
 				+ " FROM contacts"
-				+ " WHERE lastReceivedDate IS NOT NULL;";
+				+ " WHERE lastReceivedYear IS NOT NULL;";
 		
 		PreparedStatement statement = this.connection.prepareStatement(sql);
 		ResultSet results = statement.executeQuery();
@@ -127,7 +127,7 @@ public class DBAccess {
 				+ " firstName,"
 				+ " lastName,"
 				+ " email,"
-				+ " lastReceivedDate"
+				+ " lastReceivedYear"
 				+ " FROM contacts"
 				+ " WHERE firstName = ?"
 				+ " AND lastName = ?;";
@@ -151,7 +151,7 @@ public class DBAccess {
 				+ " firstName,"
 				+ " lastName,"
 				+ " email,"
-				+ " lastReceivedDate"
+				+ " lastReceivedYear"
 				+ " FROM contacts"
 				+ " WHERE firstName = ?;";
 		
@@ -173,7 +173,7 @@ public class DBAccess {
 				+ " firstName,"
 				+ " lastName,"
 				+ " email,"
-				+ " lastReceivedDate"
+				+ " lastReceivedYear"
 				+ " FROM contacts"
 				+ " WHERE lastName = ?;";
 		
