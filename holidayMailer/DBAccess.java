@@ -64,7 +64,7 @@ public class DBAccess {
 	public ArrayList<Contact> getAllContacts () throws SQLException {
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
-		String sql = "SELECT email, firstName, lastName, YEAR(lastReceivedDate) AS lastReceivedDate FROM contacts;";
+		String sql = "SELECT firstName, lastName, email, lastReceivedDate FROM contacts;";
 		
 		PreparedStatement statement = this.connection.prepareStatement(sql);
 		ResultSet results = statement.executeQuery();
@@ -79,10 +79,11 @@ public class DBAccess {
 	public ArrayList<Contact> getPreviousSenders (int yearOffset) throws SQLException {
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
-		String sql = "SELECT email,"
+		String sql = "SELECT"
 				+ " firstName,"
 				+ " lastName,"
-				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " email,"
+				+ " lastReceivedDate"
 				+ " FROM contacts"
 				+ " WHERE lastReceivedDate IS NOT NULL"
 				+ " AND YEAR(lastReceivedDate) > YEAR(CURDATE()) - ?;";
@@ -101,10 +102,11 @@ public class DBAccess {
 	public ArrayList<Contact> getPreviousSenders () throws SQLException {
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
-		String sql = "SELECT email,"
+		String sql = "SELECT"
 				+ " firstName,"
 				+ " lastName,"
-				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " email,"
+				+ " lastReceivedDate"
 				+ " FROM contacts"
 				+ " WHERE lastReceivedDate IS NOT NULL;";
 		
@@ -121,10 +123,11 @@ public class DBAccess {
 	public ArrayList<Contact> getContactsByName (String firstName, String lastName) throws SQLException {
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
-		String sql = "SELECT email,"
+		String sql = "SELECT"
 				+ " firstName,"
 				+ " lastName,"
-				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " email,"
+				+ " lastReceivedDate"
 				+ " FROM contacts"
 				+ " WHERE firstName = ?"
 				+ " AND lastName = ?;";
@@ -144,10 +147,11 @@ public class DBAccess {
 	public ArrayList<Contact> getContactsByFirstName (String firstName) throws SQLException {
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
-		String sql = "SELECT email,"
+		String sql = "SELECT"
 				+ " firstName,"
 				+ " lastName,"
-				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " email,"
+				+ " lastReceivedDate"
 				+ " FROM contacts"
 				+ " WHERE firstName = ?;";
 		
@@ -165,10 +169,11 @@ public class DBAccess {
 	public ArrayList<Contact> getContactsByLastName (String lastName) throws SQLException {
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
-		String sql = "SELECT email,"
+		String sql = "SELECT"
 				+ " firstName,"
 				+ " lastName,"
-				+ " YEAR(lastReceivedDate) AS lastReceivedDate"
+				+ " email,"
+				+ " lastReceivedDate"
 				+ " FROM contacts"
 				+ " WHERE lastName = ?;";
 		
