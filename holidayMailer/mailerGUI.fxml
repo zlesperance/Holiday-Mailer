@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="holidayMailer.MailerGUIController">
+   <children>
+      <HBox prefHeight="26.0" prefWidth="600.0">
+         <children>
+            <MenuBar HBox.hgrow="ALWAYS">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem fx:id="newContactButton" mnemonicParsing="false" text="New Contact" />
+                    <MenuItem fx:id="quitButton" mnemonicParsing="false" onAction="#handleQuitAction" text="Quit" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                      <MenuItem fx:id="removeSelectedButton" disable="true" mnemonicParsing="false" text="Remove Selected" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem fx:id="aboutButton" mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="11.0" layoutY="32.0" prefHeight="326.0" prefWidth="577.0">
+         <children>
+            <TableView fx:id="contactsTable" editable="true" layoutX="22.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn prefWidth="154.0" text="First Name" />
+                <TableColumn prefWidth="137.0" text="Last Name" />
+                  <TableColumn prefWidth="187.0" text="Email" />
+                  <TableColumn prefWidth="98.0" text="Last Received" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="14.0" layoutY="363.0" prefHeight="26.0" prefWidth="577.0">
+         <children>
+            <Button fx:id="emailSelectedButton" layoutX="525.0" layoutY="1.0" mnemonicParsing="false" text="Email Selected" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="emailAllButton" layoutX="403.0" layoutY="1.0" mnemonicParsing="false" text="Email All" AnchorPane.rightAnchor="100.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
