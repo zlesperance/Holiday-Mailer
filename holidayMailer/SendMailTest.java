@@ -33,9 +33,9 @@ public class SendMailTest {
 			}
 		}
 		///
-		tester = new Contact("smather@eagles.ewu.edu", "Steven", "Mather", 2013);
+		Contact tester2 = new Contact("smather@eagles.ewu.edu", "Steven", "Mather", 2013);
 		try {
-			db.create(tester);
+			db.create(tester2);
 		} catch (SQLException e) {
 			fail("Error When Creating User");
 			try {
@@ -45,9 +45,9 @@ public class SendMailTest {
 			}
 		}
 		///
-		tester = new Contact("lord_of_fudge@hotmail.com", "Steven2", "Mather2", 2000);
+		Contact tester3 = new Contact("lord_of_fudge@hotmail.com", "Steven2", "Mather2", 2000);
 		try {
-			db.create(tester);
+			db.create(tester3);
 		} catch (SQLException e) {
 			fail("Error When Creating User");
 			try {
@@ -57,9 +57,9 @@ public class SendMailTest {
 			}
 		}
 		///
-		tester = new Contact("lordfoodge@gmail.com", "Steven3", "Mather4", 2005);
+		Contact tester4 = new Contact("lordfoodge@gmail.com", "Steven3", "Mather4", 2005);
 		try {
-			db.create(tester);
+			db.create(tester4);
 		} catch (SQLException e) {
 			fail("Error When Creating User");
 			try {
@@ -68,17 +68,7 @@ public class SendMailTest {
 				fail("Could Not Close Database");
 			}
 		}
-		try {
-			db.delete(tester);
-		} catch (SQLException e) {
-			fail("Error When Deleting User");
-		} finally {
-			try {
-				db.close();
-			} catch (SQLException e) {
-				fail("Could Not Close Database");
-			}
-		}
+
 		try{
 			SendMail.sendByFirstName("Steven");
 		} catch (RuntimeException e2){
@@ -108,6 +98,27 @@ public class SendMailTest {
 			SendMail.sendAll();
 		}catch (RuntimeException e7){
 			fail("Failed to send.");
+		}
+		
+		try {
+			db.delete(tester);
+		} catch (SQLException e) {
+			fail("Error When Deleting User");
+		} 
+		try {
+			db.delete(tester2);
+		} catch (SQLException e) {
+			fail("Error When Deleting User");
+		} 
+		try {
+			db.delete(tester3);
+		} catch (SQLException e) {
+			fail("Error When Deleting User");
+		} 
+		try {
+			db.delete(tester4);
+		} catch (SQLException e) {
+			fail("Error When Deleting User");
 		}
 		
 	}
