@@ -1,5 +1,6 @@
 package holidayMailer;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,12 +10,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
-public class MailerGUIController implements Initializable{
+public class MailerGUIController implements Initializable {
 	@FXML
 	TableView<Contact> contactsTable;
+	@FXML
+	MenuBar mailerMenuBar;
 	@FXML
 	MenuItem newContactButton;
 	@FXML
@@ -27,12 +34,16 @@ public class MailerGUIController implements Initializable{
 	MenuItem aboutButton;
 	@FXML
 	Button emailAllButton;
+	
 	private UserOut userOut;
 	private UserIn userIn;
 	private DBAccess dbAccess;
+	private Stage childWindow;
+	private ResourceBundle resources;
 	
 	@Override
-	public void initialize (URL location, ResourceBundle resources) {		
+	public void initialize (URL location, ResourceBundle resources) {
+		this.resources = resources;
 		initializeTable();
 	} // end initialize
 	
@@ -90,6 +101,15 @@ public class MailerGUIController implements Initializable{
 		contactsTable.setItems(data);
 	} // end refreshTable
 	
+	public void addContactToTable (Contact contact) {
+		try {
+			this.dbAccess.create(contact);
+			contactsTable.getItems().add(contact);
+		} catch (SQLException e) {
+			this.userOut.printString("An Error Occurred when saving the contact to the database");
+		}
+	} // end addContactToTable
+	
 	public void initDB (DBAccess dbAccess) {
 		this.dbAccess = dbAccess;
 	} // end initDB
@@ -104,6 +124,38 @@ public class MailerGUIController implements Initializable{
 	
 	@FXML
 	private void handleQuitAction (ActionEvent event) {
-		GUIClient.close();
+		if (this.dbAccess != null) {
+			try {
+				this.dbAccess.close();
+			} catch (SQLException e) {
+				this.userOut.printString("An Error Occurred while closing the database: " + e.getMessage());
+			}
+		}
+		
+		Stage stage = (Stage) mailerMenuBar.getScene().getWindow();
+		stage.close();
+	} // end handleQuitAction
+	
+	@FXML
+	private void handleNewContact (ActionEvent event) {
+		//this.parentWindow.openWindow(GUIClient.ADD_USER_WINDOW_NAME);
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("addContactWindow.fxml"), this.resources);
+			root = loader.load();
+			if (this.childWindow != null) {
+				this.childWindow.close();
+				this.childWindow = null;
+			}
+			AddContactController controller = loader.getController();
+			controller.setParentWindow(this);
+			
+			this.childWindow = new Stage();
+			this.childWindow.setTitle("Add New Contact");
+			this.childWindow.setScene(new Scene(root, 450, 250));
+			this.childWindow.show();
+		} catch (IOException e) {
+			this.userOut.printString("An Error occurred when opening the new window: " + e.getMessage());
+		}
 	}
 } // end MailerGUIController

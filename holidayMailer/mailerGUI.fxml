@@ -8,11 +8,11 @@
    <children>
       <HBox prefHeight="26.0" prefWidth="600.0">
          <children>
-            <MenuBar HBox.hgrow="ALWAYS">
+            <MenuBar fx:id="mailerMenuBar" HBox.hgrow="ALWAYS">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                        <MenuItem fx:id="newContactButton" mnemonicParsing="false" text="New Contact" />
+                        <MenuItem fx:id="newContactButton" mnemonicParsing="false" onAction="#handleNewContact" text="New Contact" />
                     <MenuItem fx:id="quitButton" mnemonicParsing="false" onAction="#handleQuitAction" text="Quit" />
                   </items>
                 </Menu>
