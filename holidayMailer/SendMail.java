@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
  
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -85,8 +86,8 @@ public class SendMail{
 	}
 	
 	//given a first name will search through the database and send to that name
-	   public static void sendByFirstName(String name)throws RuntimeException{
-	      DBAccess db = null;
+	   public static void sendByFirstName(DBAccess db,String name)throws RuntimeException{
+	      /*
 			try {
 				db = new DBAccess();
 			} catch (SQLException e) {
@@ -95,14 +96,19 @@ public class SendMail{
 			} catch (ClassNotFoundException e) {
 				System.out.println("SQLite Driver Class Not Found");
 			}
+			*/
 	      //get people 
 			
 	      ArrayList<Contact> contacts = new ArrayList<Contact>();
 	      try{
 			   contacts = db.getContactsByFirstName (name);
+			   for(int x = 0;x < contacts.size();x++){
+					System.out.println(contacts.get(x).getFName());
+				}
 	      }
 	      catch (SQLException e2) {
-					throw new RuntimeException("could not send by first name");
+					//throw new RuntimeException("could not send by first name:"+name+":"+ contacts.size());
+	    	  throw new RuntimeException(e2);
 				}
 		   //send 
 	      int x= 0;
@@ -249,8 +255,8 @@ public class SendMail{
 				}
 	   }//end sendByPreviouslyRecivedOffset
 	   
-	   public static void sendAll(){
-		      DBAccess db = null;
+	   public static void sendAll(DBAccess db){
+		      //DBAccess db = null;
 				try {
 					db = new DBAccess();
 				} catch (SQLException e) {
@@ -266,7 +272,7 @@ public class SendMail{
 				   all = db.getAllContacts ();
 		      }
 		      catch (SQLException e2) {
-		    	  throw new RuntimeException("could not send all");
+		    	  throw new RuntimeException(e2);
 					}
 			   //send too all
 		      int x= 0;

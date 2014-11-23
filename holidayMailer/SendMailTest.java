@@ -68,9 +68,33 @@ public class SendMailTest {
 				fail("Could Not Close Database");
 			}
 		}
-
 		try{
-			SendMail.sendByFirstName("Steven");
+			SendMail.sendAll(db);
+		}catch (RuntimeException e7){
+			try {
+				db.delete(tester);
+			} catch (SQLException e) {
+				fail("Error When Deleting User");
+			} 
+			try {
+				db.delete(tester2);
+			} catch (SQLException e) {
+				fail("Error When Deleting User");
+			} 
+			try {
+				db.delete(tester3);
+			} catch (SQLException e) {
+				fail("Error When Deleting User");
+			} 
+			try {
+				db.delete(tester4);
+			} catch (SQLException e) {
+				fail("Error When Deleting User");
+			}
+			fail(e7.getLocalizedMessage());
+		}
+		try{
+			SendMail.sendByFirstName(db,"Steven");
 		} catch (RuntimeException e2){
 			try {
 				db.delete(tester);
@@ -92,7 +116,7 @@ public class SendMailTest {
 			} catch (SQLException e) {
 				fail("Error When Deleting User");
 			}
-			fail("Failed to send.");
+			fail(e2.getLocalizedMessage());
 		}
 		try{
 			SendMail.sendByLastName("Mather2");
@@ -117,7 +141,7 @@ public class SendMailTest {
 			} catch (SQLException e) {
 				fail("Error When Deleting User");
 			}
-			fail("Failed to send.");
+			fail(e3.getLocalizedMessage());
 		}
 		try{
 			SendMail.sendByName("Steven3","Mather3");
@@ -142,7 +166,7 @@ public class SendMailTest {
 			} catch (SQLException e) {
 				fail("Error When Deleting User");
 			}
-			fail("Failed to send.");
+			fail(e4.getLocalizedMessage());
 		}
 		try{
 			SendMail.sendByPreviouslyRecived();
@@ -167,7 +191,7 @@ public class SendMailTest {
 			} catch (SQLException e) {
 				fail("Error When Deleting User");
 			}
-			fail("Failed to send.");
+			fail(e5.getLocalizedMessage());
 		}
 		try{
 			SendMail.sendByPreviouslyRecivedOffset(7);
@@ -192,33 +216,9 @@ public class SendMailTest {
 			} catch (SQLException e) {
 				fail("Error When Deleting User");
 			}
-			fail("Failed to send.");
+			fail(e6.getLocalizedMessage());
 		}
-		try{
-			SendMail.sendAll();
-		}catch (RuntimeException e7){
-			try {
-				db.delete(tester);
-			} catch (SQLException e) {
-				fail("Error When Deleting User");
-			} 
-			try {
-				db.delete(tester2);
-			} catch (SQLException e) {
-				fail("Error When Deleting User");
-			} 
-			try {
-				db.delete(tester3);
-			} catch (SQLException e) {
-				fail("Error When Deleting User");
-			} 
-			try {
-				db.delete(tester4);
-			} catch (SQLException e) {
-				fail("Error When Deleting User");
-			}
-			fail("Failed to send.");
-		}
+		
 		
 		try {
 			db.delete(tester);
