@@ -106,7 +106,7 @@ public class DBAccess {
 				+ " firstName,"
 				+ " lastName,"
 				+ " email,"
-				+ " lastReceivedDate"
+				+ " lastReceivedYear"
 				+ " FROM contacts"
 				+ " WHERE lastReceivedYear IS NOT NULL;";
 		
