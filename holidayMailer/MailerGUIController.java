@@ -152,7 +152,7 @@ public class MailerGUIController implements Initializable {
 			
 			this.childWindow = new Stage();
 			this.childWindow.setTitle("Add New Contact");
-			this.childWindow.setScene(new Scene(root, 450, 250));
+			this.childWindow.setScene(new Scene(root));
 			this.childWindow.show();
 		} catch (IOException e) {
 			this.userOut.printString("An Error occurred when opening the new window: " + e.getMessage());

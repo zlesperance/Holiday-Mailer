@@ -21,7 +21,7 @@ public class GUIClient extends Application {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("mailerGUI.fxml"));
 		
-		Scene scene = new Scene(loader.load(), 600, 400);
+		Scene scene = new Scene(loader.load());
 		
 		MailerGUIController controller = loader.getController();
 		
