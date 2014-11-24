@@ -1,11 +1,15 @@
 package holidayMailer;
 
+import java.sql.SQLException;
+
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class GUIClient extends Application {
 	//private ContactFactory contactFactory;
@@ -33,6 +37,17 @@ public class GUIClient extends Application {
 		stage.setTitle("Holiday Mailer");
 		stage.setScene(scene);
 		stage.show();
+		stage.setOnCloseRequest(new EventHandler<WindowEvent> () {
+			public void handle(WindowEvent e) {
+				if (dbAccess != null) {
+					try {
+						dbAccess.close();
+					} catch (SQLException ex) {
+						userOut.printString(ex.getMessage());
+					}
+				}
+			}
+		});
 	} // end start
 
 	public static void main(String[] args) {
