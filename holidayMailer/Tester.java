@@ -1,3 +1,5 @@
+package holidayMailer;
+
 import java.util.Scanner;
 
 public class Tester{

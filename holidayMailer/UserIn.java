@@ -1,3 +1,5 @@
+package holidayMailer;
+
 import org.apache.commons.validator.routines.EmailValidator;
 import java.util.Scanner;
 import java.util.Calendar;
