@@ -21,7 +21,7 @@ public class SendMailTest {
 			fail("SQLite Driver Class Not Found");
 		}
 		///
-		Contact tester = new Contact("tester@eagles.ewu.edu", "Test", "Contact", 2013);
+		Contact tester = new Contact("Test", "Contact","tester@eagles.ewu.edu", 2013);
 		try {
 			db.create(tester);
 		} catch (SQLException e) {
@@ -33,7 +33,7 @@ public class SendMailTest {
 			}
 		}
 		///
-		Contact tester2 = new Contact("smather@eagles.ewu.edu", "Steven", "Mather", 2013);
+		Contact tester2 = new Contact("Steven", "Mather","smather@eagles.ewu.edu", 2013);
 		try {
 			db.create(tester2);
 		} catch (SQLException e) {
@@ -45,7 +45,7 @@ public class SendMailTest {
 			}
 		}
 		///
-		Contact tester3 = new Contact("lord_of_fudge@hotmail.com", "Steven2", "Mather2", 2000);
+		Contact tester3 = new Contact("Steven2", "Mather2","lord_of_fudge@hotmail.com", 2000);
 		try {
 			db.create(tester3);
 		} catch (SQLException e) {
@@ -57,7 +57,7 @@ public class SendMailTest {
 			}
 		}
 		///
-		Contact tester4 = new Contact("lordfoodge@gmail.com", "Steven3", "Mather4", 2005);
+		Contact tester4 = new Contact( "Steven3", "Mather3","lordfoodge@gmail.com", 2005);
 		try {
 			db.create(tester4);
 		} catch (SQLException e) {
@@ -174,7 +174,7 @@ public class SendMailTest {
 			try {
 				db.delete(tester);
 			} catch (SQLException e) {
-				fail("Error When Deleting User");
+				fail("Error When Deleting User"+ e5.getLocalizedMessage());
 			} 
 			try {
 				db.delete(tester2);
@@ -199,7 +199,7 @@ public class SendMailTest {
 			try {
 				db.delete(tester);
 			} catch (SQLException e) {
-				fail("Error When Deleting User");
+				fail("Error When Deleting User" + e6.getLocalizedMessage());
 			} 
 			try {
 				db.delete(tester2);
@@ -219,11 +219,19 @@ public class SendMailTest {
 			fail(e6.getLocalizedMessage());
 		}
 		
+		try {
+			db = new DBAccess();
+		} catch (SQLException e) {
+			fail("Error When connecting to the database");
+			return;
+		} catch (ClassNotFoundException e) {
+			fail("SQLite Driver Class Not Found");
+		}
 		
 		try {
 			db.delete(tester);
 		} catch (SQLException e) {
-			fail("Error When Deleting User");
+			fail("Error When Deleting User"+ e.getLocalizedMessage());
 		} 
 		try {
 			db.delete(tester2);
@@ -240,6 +248,13 @@ public class SendMailTest {
 		} catch (SQLException e) {
 			fail("Error When Deleting User");
 		}
+		try{
+			db.close();
+		}
+		catch (SQLException e){
+			fail("Error When closing");
+		}
+			
 		
 	}
 

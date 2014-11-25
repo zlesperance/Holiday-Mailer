@@ -43,10 +43,11 @@ public class SendMail{
  
 			Transport.send(message);
  
-			System.out.println("Done");//for testing only!!!!!!!!!!!!!!!!!!
+			System.out.println("Done sent to "+ addressTo);//for testing only!!!!!!!!!!!!!!!!!!
  
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+			System.out.println("failed to sent to "+ addressTo);
+			//throw new RuntimeException(e);
 		}
 	}
 	
@@ -78,7 +79,7 @@ public class SendMail{
  
 			Transport.send(message);
  
-			System.out.println("Done");//for testing only!!!!!!!!!!!!!!!!!!
+			System.out.println("Done sent to "+ addressTo);//for testing only!!!!!!!!!!!!!!!!!!
  
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
@@ -102,9 +103,6 @@ public class SendMail{
 	      ArrayList<Contact> contacts = new ArrayList<Contact>();
 	      try{
 			   contacts = db.getContactsByFirstName (name);
-			   for(int x = 0;x < contacts.size();x++){
-					System.out.println(contacts.get(x).getFName());
-				}
 	      }
 	      catch (SQLException e2) {
 					//throw new RuntimeException("could not send by first name:"+name+":"+ contacts.size());
@@ -115,7 +113,8 @@ public class SendMail{
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
 	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
-	        }
+	             x++;
+	      }
 	      try {
 					db.close();
 				} catch (SQLException e2) {
@@ -148,7 +147,8 @@ public class SendMail{
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
 	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
-	        }
+	             x++;
+	      }
 	      try {
 					db.close();
 				} catch (SQLException e2) {
@@ -181,7 +181,8 @@ public class SendMail{
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
 	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
-	        }
+	             x++;
+	      }
 	      try {
 					db.close();
 				} catch (SQLException e2) {
@@ -204,17 +205,18 @@ public class SendMail{
 			
 	      ArrayList<Contact> contacts = new ArrayList<Contact>();
 	      try{
-			   contacts = db.getPreviousSenders ();
+			   contacts = db.getPreviousSenders();
 	      }
 	      catch (SQLException e2) {
-	    	  throw new RuntimeException("could not send by previously recived");
+	    	  throw new RuntimeException(e2.getLocalizedMessage()+" could not send by previously recived");
 				}
 		   //send 
 	      int x= 0;
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
 	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
-	        }
+	             x++;
+	      }
 	      try {
 					db.close();
 				} catch (SQLException e2) {
@@ -240,14 +242,16 @@ public class SendMail{
 			   contacts = db.getPreviousSenders (yearOffset);
 	      }
 	      catch (SQLException e2) {
-	    	  throw new RuntimeException("could not send by previously recived offset");
+	    	  throw new RuntimeException("could not send by previously recived offset"+ e2.getLocalizedMessage());
 				}
 		   //send 
 	      int x= 0;
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
 	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
-	        }
+	        
+	             x++;
+	      }
 	      try {
 					db.close();
 				} catch (SQLException e2) {
@@ -279,7 +283,8 @@ public class SendMail{
 		      while (x < all.size()) {
 		             Contact cur = all.get(x);
 		             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
-		        }
+		             x++;
+		      }
 		      try {
 						db.close();
 					} catch (SQLException e2) {
