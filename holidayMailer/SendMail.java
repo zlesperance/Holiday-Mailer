@@ -112,7 +112,7 @@ public class SendMail{
 	      int x= 0;
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
-	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
+	             SendMail.Send(cur.getAddr(),"HolidayMail", "This message comes to you from the Mustache Muchacho Holiday Mailer, Greatings and happy holidays "+ cur.getFName());
 	             x++;
 	      }
 	      try {
@@ -146,7 +146,7 @@ public class SendMail{
 	      int x= 0;
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
-	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
+	             SendMail.Send(cur.getAddr(),"HolidayMail", "This message comes to you from the Mustache Muchacho Holiday Mailer, Greatings and happy holidays "+ cur.getFName());
 	             x++;
 	      }
 	      try {
@@ -180,7 +180,7 @@ public class SendMail{
 	      int x= 0;
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
-	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
+	             SendMail.Send(cur.getAddr(),"HolidayMail", "This message comes to you from the Mustache Muchacho Holiday Mailer, Greatings and happy holidays "+ cur.getFName());
 	             x++;
 	      }
 	      try {
@@ -214,7 +214,7 @@ public class SendMail{
 	      int x= 0;
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
-	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
+	             SendMail.Send(cur.getAddr(),"HolidayMail", "This message comes to you from the Mustache Muchacho Holiday Mailer, Greatings and happy holidays "+ cur.getFName());
 	             x++;
 	      }
 	      try {
@@ -248,7 +248,7 @@ public class SendMail{
 	      int x= 0;
 	      while (x < contacts.size()) {
 	             Contact cur = contacts.get(x);
-	             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
+	             SendMail.Send(cur.getAddr(),"HolidayMail", "This message comes to you from the Mustache Muchacho Holiday Mailer, Greatings and happy holidays "+ cur.getFName());
 	        
 	             x++;
 	      }
@@ -282,7 +282,7 @@ public class SendMail{
 		      int x= 0;
 		      while (x < all.size()) {
 		             Contact cur = all.get(x);
-		             SendMail.Send(cur.getAddr(),"Moustache Muchachos Test","This is a test using the gmail to send to the yahoo account.");
+		             SendMail.Send(cur.getAddr(),"HolidayMail", "This message comes to you from the Mustache Muchacho Holiday Mailer, Greatings and happy holidays "+ cur.getFName());
 		             x++;
 		      }
 		      try {
