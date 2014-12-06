@@ -40,7 +40,7 @@ public class GUIClient extends Application {
 		try {
 			dbAccess = new DBAccess();
 		} catch(Exception e) {
-			userOut.printString("An Error Occurred when connecting to the database: " + e.getMessage());
+			userOut.printError("An Error Occurred when connecting to the database: " + e.getMessage());
 			return;
 		}
 		

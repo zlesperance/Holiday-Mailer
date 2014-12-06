@@ -84,7 +84,7 @@ public class MailerGUIController implements Initializable {
 			return;
 		}
 		if (this.dbAccess == null) {
-			this.userOut.printString("Error: Database Not Found");
+			this.userOut.printError("Error: Database Not Found");
 			return;
 		}
 		
@@ -95,7 +95,7 @@ public class MailerGUIController implements Initializable {
 				data.add(contact);
 			}
 		} catch (SQLException e) {
-			this.userOut.printString("Error: Could not query users: " + e.getMessage());
+			this.userOut.printError("Error: Could not query users: " + e.getMessage());
 		}
 		
 		contactsTable.setItems(data);
@@ -106,7 +106,7 @@ public class MailerGUIController implements Initializable {
 			this.dbAccess.create(contact);
 			contactsTable.getItems().add(contact);
 		} catch (SQLException e) {
-			this.userOut.printString("An Error Occurred when saving the contact to the database");
+			this.userOut.printError("An Error Occurred when saving the contact to the database");
 		}
 	} // end addContactToTable
 	
@@ -128,7 +128,7 @@ public class MailerGUIController implements Initializable {
 			try {
 				this.dbAccess.close();
 			} catch (SQLException e) {
-				this.userOut.printString("An Error Occurred while closing the database: " + e.getMessage());
+				this.userOut.printError("An Error Occurred while closing the database: " + e.getMessage());
 			}
 		}
 		
@@ -155,7 +155,44 @@ public class MailerGUIController implements Initializable {
 			this.childWindow.setScene(new Scene(root));
 			this.childWindow.show();
 		} catch (IOException e) {
-			this.userOut.printString("An Error occurred when opening the new window: " + e.getMessage());
+			this.userOut.printError("An Error occurred when opening the new window: " + e.getMessage());
+		}
+	} // end handleNewContact
+	
+	@FXML
+	private void handleEmailSelected (ActionEvent event) {
+		ObservableList<Contact> selectedContacts = contactsTable.getSelectionModel().getSelectedItems();
+		openSendWindow(selectedContacts);
+	}
+	
+	@FXML
+	private void handleEmailAll (ActionEvent event) {
+		ObservableList<Contact> allContacts = contactsTable.getItems();
+		openSendWindow(allContacts);
+	}
+	
+	private void openSendWindow (ObservableList<Contact> contacts) {
+		if (contacts.isEmpty()) {
+			this.userOut.printError("Error: No contacts selected");
+			return;
+		}
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("sendMailWindow.fxml"), this.resources);
+			root = loader.load();
+			if (this.childWindow != null) {
+				this.childWindow.close();
+				this.childWindow = null;
+			}
+			SendMailWindowController controller = loader.getController();
+			controller.setToParam(contacts);
+			
+			this.childWindow = new Stage();
+			this.childWindow.setTitle("Send Mail");
+			this.childWindow.setScene(new Scene(root));
+			this.childWindow.show();
+		} catch (IOException e) {
+			this.userOut.printError("An Error occurred when opening the new window: " + e.getMessage());
 		}
 	}
 } // end MailerGUIController

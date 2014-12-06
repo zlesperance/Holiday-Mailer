@@ -44,7 +44,7 @@ public class AddContactController implements Initializable {
 	} // setParentWindow
 	
 	@FXML
-	public void handleAddContact (ActionEvent event) {
+	private void handleAddContact (ActionEvent event) {
 		// TODO: Use UserIn Here?
 		String firstName = contactFirstName.getText();
 		String lastName = contactLastName.getText();
@@ -76,7 +76,7 @@ public class AddContactController implements Initializable {
 	} // end handleAddContact
 	
 	@FXML
-	public void handleCancel (ActionEvent event) {
+	private void handleCancel (ActionEvent event) {
 		Node source = (Node) event.getSource();
 		Stage stage = (Stage) source.getScene().getWindow();
 		stage.close();

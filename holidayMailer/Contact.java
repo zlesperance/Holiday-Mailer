@@ -29,4 +29,9 @@ public class Contact{
    public int getLastRec(){
       return this.lastRec;
    }//end getLastRec
+   
+   @Override
+   public String toString() {
+	   return this.fName + " " + this.lName + " <" + this.addr + ">";
+   } // end toString
 }
