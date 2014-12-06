@@ -16,7 +16,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Edit">
               <items>
-                <MenuItem fx:id="removeSelectedButton" disable="true" mnemonicParsing="false" text="Remove Selected" />
+                <MenuItem fx:id="removeSelectedButton" disable="true" mnemonicParsing="false" onAction="#handleRemoveSelected" text="Remove Selected" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">

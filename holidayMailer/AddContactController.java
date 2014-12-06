@@ -10,7 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class AddContactController implements Initializable {
+public class AddContactController implements Initializable, ChildWindow {
 	@FXML
 	Button addContactButton;
 	@FXML
