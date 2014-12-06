@@ -46,7 +46,7 @@ public class UserOut implements iUserOut {
 			controller.setDetails(details);
 			
 			this.alertWindow = new Stage();
-			this.alertWindow.initModality(Modality.WINDOW_MODAL);
+			this.alertWindow.initModality(Modality.APPLICATION_MODAL);
 			this.alertWindow.setTitle("Error");
 			this.alertWindow.setScene(new Scene(root));
 			this.alertWindow.show();

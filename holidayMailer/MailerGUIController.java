@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -15,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MailerGUIController implements Initializable {
@@ -45,6 +48,9 @@ public class MailerGUIController implements Initializable {
 	public void initialize (URL location, ResourceBundle resources) {
 		this.resources = resources;
 		initializeTable();
+		BooleanBinding hasItemSelected = contactsTable.getSelectionModel().selectedItemProperty().isNull();
+		removeSelectedButton.disableProperty().bind(hasItemSelected);
+		emailSelectedButton.disableProperty().bind(hasItemSelected);
 	} // end initialize
 	
 	private void initializeTable () {
@@ -160,16 +166,37 @@ public class MailerGUIController implements Initializable {
 	} // end handleNewContact
 	
 	@FXML
+	private void handleAbout (ActionEvent event) {
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("aboutWindow.fxml"), this.resources);
+			root = loader.load();
+			if (this.childWindow != null) {
+				this.childWindow.close();
+				this.childWindow = null;
+			}
+			
+			this.childWindow = new Stage();
+			this.childWindow.initModality(Modality.APPLICATION_MODAL);
+			this.childWindow.setTitle("About");
+			this.childWindow.setScene(new Scene(root));
+			this.childWindow.show();
+		} catch (IOException e) {
+			this.userOut.printError("An Error occurred when opening the new window: " + e.getMessage());
+		}
+	} // end handleAbout
+	
+	@FXML
 	private void handleEmailSelected (ActionEvent event) {
 		ObservableList<Contact> selectedContacts = contactsTable.getSelectionModel().getSelectedItems();
 		openSendWindow(selectedContacts);
-	}
+	} // end handleEmailSelected
 	
 	@FXML
 	private void handleEmailAll (ActionEvent event) {
 		ObservableList<Contact> allContacts = contactsTable.getItems();
 		openSendWindow(allContacts);
-	}
+	} // end handleEmailAll
 	
 	private void openSendWindow (ObservableList<Contact> contacts) {
 		if (contacts.isEmpty()) {
@@ -194,5 +221,5 @@ public class MailerGUIController implements Initializable {
 		} catch (IOException e) {
 			this.userOut.printError("An Error occurred when opening the new window: " + e.getMessage());
 		}
-	}
+	} // end openSendWindow
 } // end MailerGUIController
