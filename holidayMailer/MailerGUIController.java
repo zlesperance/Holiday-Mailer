@@ -8,11 +8,9 @@ import java.util.ResourceBundle;
 
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -43,6 +41,7 @@ public class MailerGUIController implements Initializable {
 	private DBAccess dbAccess;
 	private Stage childWindow;
 	private ResourceBundle resources;
+	private ObservableList<Contact> removalBuffer;
 	
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
@@ -140,6 +139,10 @@ public class MailerGUIController implements Initializable {
 		
 		Stage stage = (Stage) mailerMenuBar.getScene().getWindow();
 		stage.close();
+		
+		if (this.childWindow != null && this.childWindow.isShowing()) {
+			this.childWindow.close();
+		}
 	} // end handleQuitAction
 	
 	@FXML
@@ -153,7 +156,7 @@ public class MailerGUIController implements Initializable {
 				this.childWindow.close();
 				this.childWindow = null;
 			}
-			AddContactController controller = loader.getController();
+			ChildWindow controller = loader.getController();
 			controller.setParentWindow(this);
 			
 			this.childWindow = new Stage();
@@ -222,4 +225,49 @@ public class MailerGUIController implements Initializable {
 			this.userOut.printError("An Error occurred when opening the new window: " + e.getMessage());
 		}
 	} // end openSendWindow
+	
+	@FXML
+	private void handleRemoveSelected (ActionEvent event) {
+		this.removalBuffer = contactsTable.getSelectionModel().getSelectedItems();
+		
+		if (this.removalBuffer.isEmpty()) {
+			this.userOut.printError("Error: No contacts selected");
+			return;
+		}
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("removeSelectedWindow.fxml"), this.resources);
+			root = loader.load();
+			if (this.childWindow != null) {
+				this.childWindow.close();
+				this.childWindow = null;
+			}
+			ChildWindow controller = loader.getController();
+			controller.setParentWindow(this);
+			
+			this.childWindow = new Stage();
+			this.childWindow.setTitle("Remove " + this.removalBuffer.size() + " Contact" + ((this.removalBuffer.size() > 1)? "s" : ""));
+			this.childWindow.setScene(new Scene(root));
+			this.childWindow.show();
+		} catch (IOException e) {
+			this.userOut.printError("An Error occurred when opening the new window: " + e.getMessage());
+		}
+	} // end handleRemoveSelected
+	
+	@FXML
+	public void confirmRemoval () {
+		if (this.removalBuffer == null)
+			return;
+		
+		for (Contact contact : this.removalBuffer) {
+			try {
+				this.dbAccess.delete(contact);
+				
+			} catch (SQLException e) {
+				this.userOut.printError("An error occurred when deleting a user", e.getMessage());
+			}
+		}
+		this.removalBuffer = null;
+		refreshTable();
+	}
 } // end MailerGUIController
