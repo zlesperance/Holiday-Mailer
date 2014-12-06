@@ -291,5 +291,213 @@ public class SendMail{
 						System.out.println("Could Not Close Database");
 					}
 		   }//end sendAll
+	   
+	   //////////////////////////////////////////////////send with custom subject and body
+	   
+	 //given a first name will search through the database and send to that name
+	   public static void sendByFirstName(DBAccess db,String name,String subject,String body)throws RuntimeException{
+	      /*
+			try {
+				db = new DBAccess();
+			} catch (SQLException e) {
+				System.out.println("Error When connecting to the database");
+				return;
+			} catch (ClassNotFoundException e) {
+				System.out.println("SQLite Driver Class Not Found");
+			}
+			*/
+	      //get people 
+			
+	      ArrayList<Contact> contacts = new ArrayList<Contact>();
+	      try{
+			   contacts = db.getContactsByFirstName (name);
+	      }
+	      catch (SQLException e2) {
+					//throw new RuntimeException("could not send by first name:"+name+":"+ contacts.size());
+	    	  throw new RuntimeException(e2);
+				}
+		   //send 
+	      int x= 0;
+	      while (x < contacts.size()) {
+	             Contact cur = contacts.get(x);
+	             SendMail.Send(cur.getAddr(),subject, body);
+	             x++;
+	      }
+	      try {
+					db.close();
+				} catch (SQLException e2) {
+					System.out.println("Could Not Close Database");
+				}
+	   }//end sendByFirstName
+	   
+	 //given a last name will search through the database and send to that name
+	   public static void sendByLastName(String name,String subject,String body){
+	      DBAccess db = null;
+			try {
+				db = new DBAccess();
+			} catch (SQLException e) {
+				System.out.println("Error When connecting to the database");
+				return;
+			} catch (ClassNotFoundException e) {
+				System.out.println("SQLite Driver Class Not Found");
+			}
+	      //get people 
+			
+	      ArrayList<Contact> contacts = new ArrayList<Contact>();
+	      try{
+			   contacts = db.getContactsByLastName (name);
+	      }
+	      catch (SQLException e2) {
+	    	  throw new RuntimeException("could not send by last name");
+				}
+		   //send 
+	      int x= 0;
+	      while (x < contacts.size()) {
+	             Contact cur = contacts.get(x);
+	             SendMail.Send(cur.getAddr(),subject, body);
+	             x++;
+	      }
+	      try {
+					db.close();
+				} catch (SQLException e2) {
+					System.out.println("Could Not Close Database");
+				}
+	   }//end sendByLastName
+	   
+	 //given a first name and last name will search through the database and send to that name
+	   public static void sendByName(String nameF,String nameL,String subject, String body){
+	      DBAccess db = null;
+			try {
+				db = new DBAccess();
+			} catch (SQLException e) {
+				System.out.println("Error When connecting to the database");
+				return;
+			} catch (ClassNotFoundException e) {
+				System.out.println("SQLite Driver Class Not Found");
+			}
+	      //get people 
+			
+	      ArrayList<Contact> contacts = new ArrayList<Contact>();
+	      try{
+			   contacts = db.getContactsByName (nameF,nameL);
+	      }
+	      catch (SQLException e2) {
+	    	  throw new RuntimeException("could not send by full name");
+				}
+		   //send 
+	      int x= 0;
+	      while (x < contacts.size()) {
+	             Contact cur = contacts.get(x);
+	             SendMail.Send(cur.getAddr(),subject,body);
+	             x++;
+	      }
+	      try {
+					db.close();
+				} catch (SQLException e2) {
+					System.out.println("Could Not Close Database");
+				}
+	   }//end sendByName
+	   
+	 //gets all previously received from
+	   public static void sendByPreviouslyRecived(String subject,String body){
+	      DBAccess db = null;
+			try {
+				db = new DBAccess();
+			} catch (SQLException e) {
+				System.out.println("Error When connecting to the database");
+				return;
+			} catch (ClassNotFoundException e) {
+				System.out.println("SQLite Driver Class Not Found");
+			}
+	      //get people 
+			
+	      ArrayList<Contact> contacts = new ArrayList<Contact>();
+	      try{
+			   contacts = db.getPreviousSenders();
+	      }
+	      catch (SQLException e2) {
+	    	  throw new RuntimeException(e2.getLocalizedMessage()+" could not send by previously recived");
+				}
+		   //send 
+	      int x= 0;
+	      while (x < contacts.size()) {
+	             Contact cur = contacts.get(x);
+	             SendMail.Send(cur.getAddr(),subject,body);
+	             x++;
+	      }
+	      try {
+					db.close();
+				} catch (SQLException e2) {
+					System.out.println("Could Not Close Database");
+				}
+	   }//end sendByPreviouslyRecived
+	   
+	 //gets all previously received from with years offset
+	   public static void sendByPreviouslyRecivedOffset(int yearOffset,String subject,String body){
+	      DBAccess db = null;
+			try {
+				db = new DBAccess();
+			} catch (SQLException e) {
+				System.out.println("Error When connecting to the database");
+				return;
+			} catch (ClassNotFoundException e) {
+				System.out.println("SQLite Driver Class Not Found");
+			}
+	      //get people 
+			
+	      ArrayList<Contact> contacts = new ArrayList<Contact>();
+	      try{
+			   contacts = db.getPreviousSenders (yearOffset);
+	      }
+	      catch (SQLException e2) {
+	    	  throw new RuntimeException("could not send by previously recived offset"+ e2.getLocalizedMessage());
+				}
+		   //send 
+	      int x= 0;
+	      while (x < contacts.size()) {
+	             Contact cur = contacts.get(x);
+	             SendMail.Send(cur.getAddr(),subject, body);
+	        
+	             x++;
+	      }
+	      try {
+					db.close();
+				} catch (SQLException e2) {
+					System.out.println("Could Not Close Database");
+				}
+	   }//end sendByPreviouslyRecivedOffset
+	   
+	   public static void sendAll(DBAccess db,String subject,String body){
+		      //DBAccess db = null;
+				try {
+					db = new DBAccess();
+				} catch (SQLException e) {
+					System.out.println("Error When connecting to the database");
+					return;
+				} catch (ClassNotFoundException e) {
+					System.out.println("SQLite Driver Class Not Found");
+				}
+		      //get people 
+				
+		      ArrayList<Contact> all = new ArrayList<Contact>();
+		      try{
+				   all = db.getAllContacts ();
+		      }
+		      catch (SQLException e2) {
+		    	  throw new RuntimeException(e2);
+					}
+			   //send too all
+		      int x= 0;
+		      while (x < all.size()) {
+		             Contact cur = all.get(x);
+		             SendMail.Send(cur.getAddr(),subject, body);
+		             x++;
+		      }
+		      try {
+						db.close();
+					} catch (SQLException e2) {
+						System.out.println("Could Not Close Database");
+					}
+		   }//end sendAll
 
 }
