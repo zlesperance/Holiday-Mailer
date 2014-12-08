@@ -6,3 +6,4 @@
 
 "This message comes to you from the Mustache Muchacho Holiday Mailer, Happy Birthday "+name
 
+"HolidayMail", "This message comes to you from the Mustache Muchacho Holiday Mailer, Greatings and happy holidays "+ cur.getName

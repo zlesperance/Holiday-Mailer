@@ -42,5 +42,10 @@ public class Contact{
 	   
 	   return false;
 	   
-   }
+   }// end equals
+   
+   @Override
+   public String toString() {
+	   return this.fName + " " + this.lName + " <" + this.addr + ">";
+   } // end toString
 }
