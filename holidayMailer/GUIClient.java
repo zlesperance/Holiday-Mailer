@@ -2,8 +2,6 @@ package holidayMailer;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -12,13 +10,10 @@ public class GUIClient extends Application {
 	private static UserIn userIn;
 	private static UserOut userOut;
 	private static DBAccess dbAccess;
-	private static Stage stage;
 	
 
 	@Override
-	public void start(Stage stage) throws Exception {
-		GUIClient.stage = stage;
-		
+	public void start(Stage stage) throws Exception {		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("mailerGUI.fxml"));
 		
 		Scene scene = new Scene(loader.<Parent>load());
