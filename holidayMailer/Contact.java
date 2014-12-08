@@ -29,4 +29,18 @@ public class Contact{
    public int getLastRec(){
       return this.lastRec;
    }//end getLastRec
+   
+   public boolean equals(Contact that) {
+	   
+	   if (this.fName.equals(that.getFName()) &&
+		   this.lName.equals(that.getLName()) &&
+		   this.addr.equals(that.getAddr())   &&
+		   this.lastRec == that.getLastRec()      ) {
+		   
+		   return true;
+	   }//if fname, lName, addr, and lastRec are all equal
+	   
+	   return false;
+	   
+   }
 }
