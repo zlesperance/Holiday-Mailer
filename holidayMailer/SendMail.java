@@ -3,15 +3,17 @@ package holidayMailer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
- 
 
+import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.*;
+import javax.activation.*;
+import javax.sql.DataSource;
  
 public class SendMail{
  
@@ -40,6 +42,56 @@ public class SendMail{
 				InternetAddress.parse(addressTo));
 			message.setSubject(subject);
 			message.setText(body);
+ 
+			Transport.send(message);
+ 
+			System.out.println("Done sent to "+ addressTo);//for testing only!!!!!!!!!!!!!!!!!!
+ 
+		} catch (MessagingException e) {
+			System.out.println("failed to sent to "+ addressTo);
+			//throw new RuntimeException(e);
+		}
+	}
+	
+	public static void Send(String addressTo, String subject,String body,String fileAttachment) {
+		 
+		final String username = "moustachedmuchachos@gmail.com";
+		final String password = "cscd350password";
+ 
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+ 
+		Session session = Session.getInstance(props,new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+		      return new PasswordAuthentication(username, password);
+			}
+		  });
+ 
+		try {
+ 
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(username));
+			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(addressTo));
+			message.setSubject(subject);
+
+			MimeBodyPart messageBodyPart = new MimeBodyPart();
+	
+		    //fill message
+		    messageBodyPart.setText(body);
+	
+		    Multipart multipart = new MimeMultipart();
+		    multipart.addBodyPart(messageBodyPart);
+			messageBodyPart = new MimeBodyPart();
+		    DataSource source = (DataSource) new FileDataSource(fileAttachment);
+		    messageBodyPart.setDataHandler(new DataHandler((javax.activation.DataSource) source));
+		    messageBodyPart.setFileName(fileAttachment);
+		    multipart.addBodyPart(messageBodyPart);
+
+		    // Put parts in message
+		    message.setContent(multipart);
  
 			Transport.send(message);
  
@@ -86,6 +138,55 @@ public class SendMail{
 		}
 	}
 	
+	public static void Send(String addressFrom, String pass, String addressTo, String subject,String body,String fileAttachment) {
+		 
+		final String username = "addressFrom";
+		final String password = "pass";
+ 
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+ 
+		Session session = Session.getInstance(props,new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+		      return new PasswordAuthentication(username, password);
+			}
+		  });
+ 
+		try {
+ 
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(username));
+			message.setRecipients(Message.RecipientType.TO,
+				InternetAddress.parse(addressTo));
+			message.setSubject(subject);
+			
+			MimeBodyPart messageBodyPart = new MimeBodyPart();
+			
+		    //fill message
+		    messageBodyPart.setText(body);
+	
+		    Multipart multipart = new MimeMultipart();
+		    multipart.addBodyPart(messageBodyPart);
+			messageBodyPart = new MimeBodyPart();
+		    DataSource source = (DataSource) new FileDataSource(fileAttachment);
+		    messageBodyPart.setDataHandler(new DataHandler((javax.activation.DataSource) source));
+		    messageBodyPart.setFileName(fileAttachment);
+		    multipart.addBodyPart(messageBodyPart);
+
+		    // Put parts in message
+		    message.setContent(multipart);
+ 
+			Transport.send(message);
+ 
+			System.out.println("Done sent to "+ addressTo);//for testing only!!!!!!!!!!!!!!!!!!
+ 
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	//given a first name will search through the database and send to that name
 	   public static void sendByFirstName(DBAccess db,String name)throws RuntimeException{
 	      /*
