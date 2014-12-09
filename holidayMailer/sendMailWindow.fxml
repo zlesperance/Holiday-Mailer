@@ -6,7 +6,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="holidayMailer.SendMailWindowController">
    <children>
       <GridPane hgap="20.0" layoutX="78.0" layoutY="52.0" vgap="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
@@ -17,6 +16,7 @@
         <rowConstraints>
           <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Message:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Label text="Message:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -45,6 +45,20 @@
                   <Insets />
                </GridPane.margin>
             </TextField>
+            <Label text="Attachment:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <TextField fx:id="attachmentLabel" disable="true" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#handleFile" text="Browse..." />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
@@ -53,7 +67,7 @@
             <Insets />
          </opaqueInsets>
       </GridPane>
-      <TextArea fx:id="messageTextBox" layoutX="20.0" layoutY="140.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="140.0" />
+      <TextArea fx:id="messageTextBox" layoutX="20.0" layoutY="140.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="180.0" />
       <HBox alignment="CENTER_RIGHT" layoutX="20.0" layoutY="319.0" prefHeight="34.0" prefWidth="560.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <children>
             <Button fx:id="sendButton" mnemonicParsing="false" onAction="#handleSend" text="Send" />

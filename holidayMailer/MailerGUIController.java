@@ -78,34 +78,6 @@ public class MailerGUIController implements Initializable {
 	
 	private void initializeTable () {
 		//ObservableList<TableColumn<Contact, ?>> columns = contactsTable.getColumns();
-		// Set up context menu:
-		contactsTable.setRowFactory(
-			new Callback<TableView<Contact>, TableRow<Contact>>() {
-				public TableRow<Contact> call(TableView<Contact> tableView) {
-				final TableRow<Contact> row = new TableRow<Contact>();
-				final ContextMenu rowMenu = new ContextMenu();
-				MenuItem editItem = new MenuItem("Edit");
-				editItem.setOnAction(new EventHandler<ActionEvent>() {
-					public void handle(ActionEvent event) {
-				    	userOut.printError("Edit Menu Not Implemented");
-				    }
-				});
-				MenuItem removeItem = new MenuItem("Delete");
-				removeItem.setOnAction(new EventHandler<ActionEvent>() {
-					public void handle(ActionEvent event) {
-						contactsTable.getItems().remove(row.getItem());
-					}
-				});
-				rowMenu.getItems().addAll(editItem, removeItem);
-				
-				// only display context menu for non-null items:
-				row.contextMenuProperty().bind(
-					Bindings.when(Bindings.isNotNull(row.itemProperty()))
-						.then(rowMenu)
-						.otherwise((ContextMenu)null));
-					return row;
-				}
-		});
 		
 		TableColumn<Contact,String> firstNameCol = new TableColumn<Contact,String>("First Name");
 		firstNameCol.setPrefWidth(154.0);
@@ -167,7 +139,11 @@ public class MailerGUIController implements Initializable {
 				
 				if (contact.getFName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
 					return true;
-				} else if (contact.getLName().toLowerCase().indexOf(lowerCaseFilter) != 1) {
+				} else if (contact.getLName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else if (contact.getAddr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else if (String.valueOf(contact.getLastRec()).indexOf(lowerCaseFilter) != -1) {
 					return true;
 				}
 				
