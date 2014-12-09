@@ -159,7 +159,7 @@ public class MailerGUIController implements Initializable {
 		
 		boolean successful = this.mailControl.addContact(contact);
 		if(successful) {
-			contactsTable.getItems().add(contact);
+			this.tableData.add(contact);
 		}//if added
 		
 	} // end addContactToTable
