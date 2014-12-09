@@ -29,9 +29,9 @@ public class SendMailWindowController implements Initializable {
 	
 	@FXML
 	Button sendButton;
-	
+   
 	private List<Contact> toSend;
-
+   
 	public void initialize(URL arg0, ResourceBundle arg1) {		
 	} // end initialize
 	
