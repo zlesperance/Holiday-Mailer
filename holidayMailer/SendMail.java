@@ -55,8 +55,8 @@ public class SendMail{
 	
 	public static void Send(String addressTo, String subject,String body,String fileAttachment) {
 		 
-		final String username = "moustachedmuchachos@gmail.com";
-		final String password = "cscd350password";
+		final String username = "moustachedmuchachosdose@gmail.com";
+		final String password = "cscd350password2";
  
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
