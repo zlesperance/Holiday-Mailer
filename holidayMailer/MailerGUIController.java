@@ -124,9 +124,9 @@ public class MailerGUIController implements Initializable {
 	
 	@FXML
 	private void handleQuitAction (ActionEvent event) {
-		
+		boolean close = true;
 		try {
-			this.mailControl.commitChanges();
+			this.mailControl.commitChanges(close);
 		} catch (SQLException e) {
 			this.userOut.printError("An Error Occurred while closing the database: " + e.getMessage());
 		}//try/catch

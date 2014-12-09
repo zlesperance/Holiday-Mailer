@@ -32,19 +32,18 @@ public class MailControl {
 	
 	}//getContacts	
 		
-	public void commitChanges() throws SQLException {
+	public void commitChanges(boolean close) throws SQLException {
 	
 		updateContactInDB();
 		addContactToDB();
-		removeContactFromDB();
+		removeContactFromDB();	
 		
-		try {
-			this.dba.close();
-		} catch (SQLException e) {
-			this.uo.printError("An Error Occurred while closing the database: " + e.getMessage());
-		}//try/catch
+		if (close) {
+			closeDB();
+		}
 				
 	}//commitChanges	
+	
 	
 	public void editContact(Contact con) {
 		
@@ -152,5 +151,16 @@ public class MailControl {
 		}//if updatedContact != null
 		
 	}//updateContactInDB	
+	
+	private void closeDB() {
+		
+		try {
+			this.dba.close();
+		} catch (SQLException e) {
+			this.uo.printError("An Error Occurred while closing the database: " + e.getMessage());
+		}//try/catch
+		
+	}//close db
+	
 		
 }//class
