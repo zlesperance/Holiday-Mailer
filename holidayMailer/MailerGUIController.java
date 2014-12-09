@@ -43,7 +43,6 @@ public class MailerGUIController implements Initializable {
 	private ResourceBundle resources;
 	private ObservableList<Contact> removalBuffer;
 	
-	@Override
 	public void initialize (URL location, ResourceBundle resources) {
 		this.resources = resources;
 		initializeTable();
