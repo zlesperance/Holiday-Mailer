@@ -1,5 +1,7 @@
 package holidayMailer;
 
+import java.sql.SQLException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -11,7 +13,7 @@ public class GUIClient extends Application {
 	//private ContactFactory contactFactory;
 	private static UserIn userIn;
 	private static UserOut userOut;
-	private static DBAccess dbAccess;
+	private static MailControl mailControl;
 	private static Stage stage;
 	
 
@@ -21,11 +23,11 @@ public class GUIClient extends Application {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("mailerGUI.fxml"));
 		
-		Scene scene = new Scene(loader.load());
+		Scene scene = new Scene(loader.<Parent>load());
 		
 		MailerGUIController controller = loader.getController();
-		
-		controller.initDB(dbAccess);
+				
+		controller.initDB(mailControl);
 		controller.initUserOut(userOut);
 		controller.initUserIn(userIn);
 		controller.refreshTable();
@@ -38,12 +40,10 @@ public class GUIClient extends Application {
 	public static void main(String[] args) {
 		userOut = new UserOut();
 		try {
-			dbAccess = new DBAccess();
-		} catch(Exception e) {
+			mailControl = new MailControl (userOut);
+		} catch (SQLException e) {
 			userOut.printError("An Error Occurred when connecting to the database: " + e.getMessage());
-			return;
 		}
-		
 		launch(args);
 	} // end main
 } // end GUIClient

@@ -38,12 +38,11 @@ public class MailerGUIController implements Initializable {
 	
 	private UserOut userOut;
 	private UserIn userIn;
-	private DBAccess dbAccess;
+	private MailControl mailControl;
 	private Stage childWindow;
 	private ResourceBundle resources;
 	private ObservableList<Contact> removalBuffer;
 	
-	@Override
 	public void initialize (URL location, ResourceBundle resources) {
 		this.resources = resources;
 		initializeTable();
@@ -88,35 +87,31 @@ public class MailerGUIController implements Initializable {
 		if (this.userOut == null) {
 			return;
 		}
-		if (this.dbAccess == null) {
+		if (this.mailControl == null) {
 			this.userOut.printError("Error: Database Not Found");
 			return;
 		}
 		
 		ObservableList<Contact> data = FXCollections.observableArrayList();
-		try {
-			ArrayList<Contact> contacts = this.dbAccess.getAllContacts();
-			for (Contact contact : contacts) {
-				data.add(contact);
-			}
-		} catch (SQLException e) {
-			this.userOut.printError("Error: Could not query users: " + e.getMessage());
+		
+		ArrayList<Contact> contacts = this.mailControl.getContacts();
+		for (Contact contact : contacts) {
+			data.add(contact);
 		}
 		
 		contactsTable.setItems(data);
 	} // end refreshTable
 	
 	public void addContactToTable (Contact contact) {
-		try {
-			this.dbAccess.create(contact);
-			contactsTable.getItems().add(contact);
-		} catch (SQLException e) {
-			this.userOut.printError("An Error Occurred when saving the contact to the database");
-		}
+		
+		this.mailControl.addContact(contact);
+		contactsTable.getItems().add(contact);
+		
 	} // end addContactToTable
-	
-	public void initDB (DBAccess dbAccess) {
-		this.dbAccess = dbAccess;
+		
+	public void initDB (MailControl mc) {
+		
+		this.mailControl = mc;
 	} // end initDB
 	
 	public void initUserOut (UserOut userOut) {
@@ -129,13 +124,12 @@ public class MailerGUIController implements Initializable {
 	
 	@FXML
 	private void handleQuitAction (ActionEvent event) {
-		if (this.dbAccess != null) {
-			try {
-				this.dbAccess.close();
-			} catch (SQLException e) {
-				this.userOut.printError("An Error Occurred while closing the database: " + e.getMessage());
-			}
-		}
+		
+		try {
+			this.mailControl.commitChanges();
+		} catch (SQLException e) {
+			this.userOut.printError("An Error Occurred while closing the database: " + e.getMessage());
+		}//try/catch
 		
 		Stage stage = (Stage) mailerMenuBar.getScene().getWindow();
 		stage.close();
@@ -260,13 +254,10 @@ public class MailerGUIController implements Initializable {
 			return;
 		
 		for (Contact contact : this.removalBuffer) {
-			try {
-				this.dbAccess.delete(contact);
-				
-			} catch (SQLException e) {
-				this.userOut.printError("An error occurred when deleting a user", e.getMessage());
-			}
+			
+			this.mailControl.deleteContact(contact);
 		}
+		
 		this.removalBuffer = null;
 		refreshTable();
 	}

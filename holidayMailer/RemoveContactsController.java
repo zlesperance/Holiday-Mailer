@@ -19,7 +19,6 @@ public class RemoveContactsController implements Initializable, ChildWindow {
 	@FXML
 	Button actionButton;
 
-	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
