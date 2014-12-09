@@ -51,29 +51,29 @@ public class MailControl {
 		
 	}//editContact
 	
-	public void addContact(Contact con) {
+	public boolean addContact(Contact con) {
 		
+		boolean canBeAdded = true;
 		if(this.addedContacts == null) {
 			this.addedContacts = new ArrayList<Contact> ();
 		}
-		
-		boolean exists = false;
+				
 		for(Contact c : contactList) {
 			
 			if (c.equals(con)) {
+				
 				uo.printError("Contact already in database.");
-				exists = true;
-				break;
+				canBeAdded = false;				
 			}//if c==con
 			
 		}//for contacts in cantoctList
 		
-		if (!exists){
-			
+		if (canBeAdded) {
 			this.contactList.add(con);
 			this.addedContacts.add(con);
-			
-		}//if not in database
+		}//if canBeAdded
+		
+		return canBeAdded;
 		
 	}//addContact
 	
