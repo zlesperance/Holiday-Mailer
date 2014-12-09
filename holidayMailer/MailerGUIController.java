@@ -299,5 +299,18 @@ public class MailerGUIController implements Initializable {
 		}
 		this.removalBuffer = null;
 		refreshTable();
+	} // end confirmRemoval
+	
+	@FXML
+	public void handleFilter (ActionEvent event) {
+		
+	} // end handleFilter
+	
+	public void clearFilters () {
+		refreshTable();
+	} // end clearFilters
+	
+	public void filterContacts (String firstName) {
+		
 	}
 } // end MailerGUIController
