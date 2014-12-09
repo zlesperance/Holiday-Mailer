@@ -121,7 +121,7 @@ public class MailerGUIController implements Initializable {
 		
 		ArrayList<Contact> contacts = this.mailControl.getContacts();
 		for (Contact contact : contacts) {
-			data.add(contact);
+			this.tableData.add(contact);
 		}
 		
 		FilteredList<Contact> filteredData = new FilteredList<Contact>(this.tableData, p -> true);
@@ -176,7 +176,7 @@ public class MailerGUIController implements Initializable {
 	} // end initUserIn
 	
 	@FXML
-	private void handleQuitAction (ActionEvent event) {
+	public void handleQuitAction (Event event) {
 		boolean close = true;
 		try {
 			this.mailControl.commitChanges(close);
