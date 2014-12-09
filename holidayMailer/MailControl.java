@@ -4,8 +4,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class MailControl {
-
-	private UserIn ui;
+	
 	private UserOut uo;
 	private ArrayList<Contact> contactList;
 	private ArrayList<Contact> updatedContacts;
@@ -13,16 +12,17 @@ public class MailControl {
 	private ArrayList<Contact> removedContacts;
 	private DBAccess dba;
 	
-	public MailControl (UserIn ui, UserOut uo, DBAccess dba) throws SQLException {
-		
-		this.ui = ui;
+	public MailControl (UserOut uo) throws SQLException {
+				
 		this.uo = uo;
-		this.dba = dba;	
 		try {
+			this.dba = new DBAccess ();
 			this.contactList = dba.getAllContacts();
 		} catch (SQLException e) {
-			this.uo.printString("An error occured querying the database.");
-		}//try/catch
+			this.uo.printError("An error occured querying the database.");
+		} catch (Exception e) {
+			this.uo.printError ("Error connecting to the database");
+		}	
 		
 	}//Constructor
 	
@@ -31,55 +31,19 @@ public class MailControl {
 		return this.contactList;
 	
 	}//getContacts	
-	
-	public void commitChanges() throws SQLException {
 		
+	public void commitChanges(boolean close) throws SQLException {
+	
 		updateContactInDB();
 		addContactToDB();
-		removeContactFromDB();
+		removeContactFromDB();	
+		
+		if (close) {
+			closeDB();
+		}
 				
-	}//commitChanges
+	}//commitChanges	
 	
-	private void addContactToDB() {
-		
-		for (Contact contact : addedContacts) {
-			try {
-				dba.create(contact);
-			} catch (SQLException e) {
-				uo.printString("An error occured creating a new contact in the database.");
-				
-			}//try/catch
-			
-		}//for contact in updated
-		
-	}//addContactToDB
-	
-	private void removeContactFromDB() {
-		
-		for (Contact contact : removedContacts) {
-			try {
-				dba.delete(contact);
-			} catch (SQLException e) {
-				uo.printString("An error occured deleting a contact from the database.");
-			}
-		}//for contact in updated
-		
-	}//removeContactFromDB
-
-	private void updateContactInDB() {
-		
-		for (Contact contact : updatedContacts) {
-			try {
-				dba.update(contact);
-				
-			} catch (SQLException e) {
-				uo.printString("An error occured updating the database");
-				
-			}//try/catch
-			
-		}//for contact in updated
-		
-	}//updateContactInDB	
 	
 	public void editContact(Contact con) {
 		
@@ -89,11 +53,15 @@ public class MailControl {
 	
 	public void addContact(Contact con) {
 		
+		if(this.addedContacts == null) {
+			this.addedContacts = new ArrayList<Contact> ();
+		}
+		
 		boolean exists = false;
 		for(Contact c : contactList) {
 			
 			if (c.equals(con)) {
-				uo.printString("Contact already in database.");
+				uo.printError("Contact already in database.");
 				exists = true;
 				break;
 			}//if c==con
@@ -111,6 +79,10 @@ public class MailControl {
 	
 	public void deleteContact(Contact con) {
 		
+		if (this.removedContacts == null) {
+			this.removedContacts = new ArrayList<Contact> ();
+		}
+		
 		boolean exists = false;
 		for(Contact c : contactList) {
 			
@@ -126,10 +98,69 @@ public class MailControl {
 		
 		if (!exists){
 			
-			uo.printString("Contact not in database");
+			uo.printError("Contact not in database");
 			
 		}//if not in database		
 		
 	}//deleteContact
+	
+	//-----Private helper methods
+	private void addContactToDB() {
+		
+		if (this.addedContacts != null) {
+			for (Contact contact : addedContacts) {
+				try {
+					dba.create(contact);
+				} catch (SQLException e) {
+					uo.printError("An error occured creating a new contact in the database.");
+					
+				}//try/catch
+				
+			}//for contact in updated
+		}//if addContacts != null
+		
+	}//addContactToDB
+	
+	private void removeContactFromDB() {
+		
+		if (this.removedContacts != null) { 
+			for (Contact contact : removedContacts) {
+				try {
+					dba.delete(contact);
+				} catch (SQLException e) {
+					uo.printError("An error occured deleting a contact from the database.");
+				}
+			}//for contact in updated
+		}
+	}//removeContactFromDB
+
+	private void updateContactInDB() {
+		
+		if (this.updatedContacts != null) {
+			for (Contact contact : updatedContacts) {
+				try {
+					dba.update(contact);
+					
+				} catch (SQLException e) {
+					uo.printError("An error occured updating the database");
+					
+				}//try/catch
+				
+			}//for contact in updated
+			
+		}//if updatedContact != null
+		
+	}//updateContactInDB	
+	
+	private void closeDB() {
+		
+		try {
+			this.dba.close();
+		} catch (SQLException e) {
+			this.uo.printError("An Error Occurred while closing the database: " + e.getMessage());
+		}//try/catch
+		
+	}//close db
+	
 		
 }//class

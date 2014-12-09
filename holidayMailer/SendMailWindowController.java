@@ -31,7 +31,7 @@ public class SendMailWindowController implements Initializable {
 	
 	@FXML
 	Button sendButton;
-	
+   
 	@FXML
 	TextField attachmentLabel;
    
