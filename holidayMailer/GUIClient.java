@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,9 +17,7 @@ public class GUIClient extends Application {
 	
 
 	@Override
-	public void start(Stage stage) throws Exception {
-		GUIClient.stage = stage;
-		
+	public void start(Stage stage) throws Exception {		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("mailerGUI.fxml"));
 		
 		Scene scene = new Scene(loader.<Parent>load());
