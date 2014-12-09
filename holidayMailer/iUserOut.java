@@ -14,4 +14,6 @@ public interface iUserOut {
     void printFName(String name);
     void printEMail(String email);
     void printLastRec(int date);
+    void printError(String msg);
+    void printError(String msg, String details);
 }
