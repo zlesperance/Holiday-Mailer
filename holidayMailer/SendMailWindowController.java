@@ -59,6 +59,9 @@ public class SendMailWindowController implements Initializable {
             SendMail.Send(cur.getAddr(),subjectTextBox.getText(),messageTextBox.getText());
             x++;
      }
+		Node source = (Node) event.getSource();
+		Stage stage = (Stage) source.getScene().getWindow();
+		stage.close();
 	} // end handleSend
 	
 	@FXML
