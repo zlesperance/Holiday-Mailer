@@ -6,10 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class MailerGUIController implements Initializable {
 	@FXML
@@ -53,6 +56,34 @@ public class MailerGUIController implements Initializable {
 	
 	private void initializeTable () {
 		//ObservableList<TableColumn<Contact, ?>> columns = contactsTable.getColumns();
+		// Set up context menu:
+		contactsTable.setRowFactory(
+			new Callback<TableView<Contact>, TableRow<Contact>>() {
+				public TableRow<Contact> call(TableView<Contact> tableView) {
+				final TableRow<Contact> row = new TableRow<Contact>();
+				final ContextMenu rowMenu = new ContextMenu();
+				MenuItem editItem = new MenuItem("Edit");
+				editItem.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent event) {
+				    	userOut.printError("Edit Menu Not Implemented");
+				    }
+				});
+				MenuItem removeItem = new MenuItem("Delete");
+				removeItem.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent event) {
+						contactsTable.getItems().remove(row.getItem());
+					}
+				});
+				rowMenu.getItems().addAll(editItem, removeItem);
+				
+				// only display context menu for non-null items:
+				row.contextMenuProperty().bind(
+					Bindings.when(Bindings.isNotNull(row.itemProperty()))
+						.then(rowMenu)
+						.otherwise((ContextMenu)null));
+					return row;
+				}
+		});
 		
 		TableColumn<Contact,String> firstNameCol = new TableColumn<Contact,String>("First Name");
 		firstNameCol.setPrefWidth(154.0);
