@@ -67,7 +67,7 @@ public class SendMailWindowController implements Initializable {
             if (this.attachment == null) {
             	SendMail.Send(cur.getAddr(), subjectTextBox.getText(), messageTextBox.getText());
             } else {
-            	//SendMail.Send(cur.getAddr(), subjectTextBox.getText(), messageTextBox.getText(), this.attachment);
+            	SendMail.Send(cur.getAddr(), subjectTextBox.getText(), messageTextBox.getText(), this.attachment);
             }
             x++;
      }

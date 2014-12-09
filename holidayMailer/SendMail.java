@@ -1,5 +1,6 @@
 package holidayMailer;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -53,7 +54,7 @@ public class SendMail{
 		}
 	}
 	
-	public static void Send(String addressTo, String subject,String body,String fileAttachment) {
+	public static void Send(String addressTo, String subject,String body,File fileAttachment) {
 		 
 		final String username = "moustachedmuchachosdose@gmail.com";
 		final String password = "cscd350password2";
@@ -85,9 +86,9 @@ public class SendMail{
 		    Multipart multipart = new MimeMultipart();
 		    multipart.addBodyPart(messageBodyPart);
 			messageBodyPart = new MimeBodyPart();
-		    DataSource source = (DataSource) new FileDataSource(fileAttachment);
+		    DataSource source =  (DataSource) fileAttachment;
 		    messageBodyPart.setDataHandler(new DataHandler((javax.activation.DataSource) source));
-		    messageBodyPart.setFileName(fileAttachment);
+		    messageBodyPart.setFileName(fileAttachment.getName());
 		    multipart.addBodyPart(messageBodyPart);
 
 		    // Put parts in message
@@ -138,7 +139,7 @@ public class SendMail{
 		}
 	}
 	
-	public static void Send(String addressFrom, String pass, String addressTo, String subject,String body,String fileAttachment) {
+	public static void Send(String addressFrom, String pass, String addressTo, String subject,String body,File fileAttachment) {
 		 
 		final String username = "addressFrom";
 		final String password = "pass";
@@ -171,9 +172,9 @@ public class SendMail{
 		    Multipart multipart = new MimeMultipart();
 		    multipart.addBodyPart(messageBodyPart);
 			messageBodyPart = new MimeBodyPart();
-		    DataSource source = (DataSource) new FileDataSource(fileAttachment);
+		    DataSource source = (DataSource) fileAttachment;
 		    messageBodyPart.setDataHandler(new DataHandler((javax.activation.DataSource) source));
-		    messageBodyPart.setFileName(fileAttachment);
+		    messageBodyPart.setFileName(fileAttachment.getName());
 		    multipart.addBodyPart(messageBodyPart);
 
 		    // Put parts in message
