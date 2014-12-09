@@ -3,10 +3,12 @@ package holidayMailer;
 import java.sql.SQLException;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class GUIClient extends Application {
 	//private ContactFactory contactFactory;
@@ -31,6 +33,15 @@ public class GUIClient extends Application {
 		
 		stage.setTitle("Holiday Mailer");
 		stage.setScene(scene);
+		
+		stage.onCloseRequestProperty().set(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent event) {
+				// TODO Auto-generated method stub
+				controller.handleQuitAction(event);
+			}
+		});
+
 		stage.show();
 	} // end start
 

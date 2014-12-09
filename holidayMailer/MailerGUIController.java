@@ -6,11 +6,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.sql.RowSet;
+import javax.sql.rowset.Predicate;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.scene.Parent;
@@ -19,6 +27,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 public class MailerGUIController implements Initializable {
@@ -38,6 +47,18 @@ public class MailerGUIController implements Initializable {
 	MenuItem aboutButton;
 	@FXML
 	Button emailAllButton;
+	@FXML
+	TextField filterField;
+	@FXML
+	Button clearFilterButton;
+	@FXML
+	TableColumn<Contact, String> firstNameColumn;
+	@FXML
+	TableColumn<Contact, String> lastNameColumn;
+	@FXML
+	TableColumn<Contact, String> emailColumn;
+	@FXML
+	TableColumn<Contact, String> lastReceivedColumn;
 	
 	private UserOut userOut;
 	private UserIn userIn;
@@ -45,6 +66,7 @@ public class MailerGUIController implements Initializable {
 	private Stage childWindow;
 	private ResourceBundle resources;
 	private ObservableList<Contact> removalBuffer;
+	private ObservableList<Contact> tableData;
 	
 	public void initialize (URL location, ResourceBundle resources) {
 		this.resources = resources;
@@ -56,34 +78,6 @@ public class MailerGUIController implements Initializable {
 	
 	private void initializeTable () {
 		//ObservableList<TableColumn<Contact, ?>> columns = contactsTable.getColumns();
-		// Set up context menu:
-		contactsTable.setRowFactory(
-			new Callback<TableView<Contact>, TableRow<Contact>>() {
-				public TableRow<Contact> call(TableView<Contact> tableView) {
-				final TableRow<Contact> row = new TableRow<Contact>();
-				final ContextMenu rowMenu = new ContextMenu();
-				MenuItem editItem = new MenuItem("Edit");
-				editItem.setOnAction(new EventHandler<ActionEvent>() {
-					public void handle(ActionEvent event) {
-				    	userOut.printError("Edit Menu Not Implemented");
-				    }
-				});
-				MenuItem removeItem = new MenuItem("Delete");
-				removeItem.setOnAction(new EventHandler<ActionEvent>() {
-					public void handle(ActionEvent event) {
-						contactsTable.getItems().remove(row.getItem());
-					}
-				});
-				rowMenu.getItems().addAll(editItem, removeItem);
-				
-				// only display context menu for non-null items:
-				row.contextMenuProperty().bind(
-					Bindings.when(Bindings.isNotNull(row.itemProperty()))
-						.then(rowMenu)
-						.otherwise((ContextMenu)null));
-					return row;
-				}
-		});
 		
 		TableColumn<Contact,String> firstNameCol = new TableColumn<Contact,String>("First Name");
 		firstNameCol.setPrefWidth(154.0);
@@ -123,14 +117,42 @@ public class MailerGUIController implements Initializable {
 			return;
 		}
 		
-		ObservableList<Contact> data = FXCollections.observableArrayList();
+		this.tableData = FXCollections.observableArrayList();
 		
 		ArrayList<Contact> contacts = this.mailControl.getContacts();
 		for (Contact contact : contacts) {
 			data.add(contact);
 		}
 		
-		contactsTable.setItems(data);
+		FilteredList<Contact> filteredData = new FilteredList<Contact>(this.tableData, p -> true);
+		
+		filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(contact -> {
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (contact.getFName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else if (contact.getLName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else if (contact.getAddr().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else if (String.valueOf(contact.getLastRec()).indexOf(lowerCaseFilter) != -1) {
+					return true;
+				}
+				
+				return false;
+			});
+		});
+		
+		SortedList<Contact> sortedData = new SortedList<Contact>(filteredData);
+		
+		sortedData.comparatorProperty().bind(contactsTable.comparatorProperty());
+		
+		contactsTable.setItems(sortedData);
 	} // end refreshTable
 	
 	public void addContactToTable (Contact contact) {
@@ -302,7 +324,5 @@ public class MailerGUIController implements Initializable {
 		refreshTable();
 	} // end clearFilters
 	
-	public void filterContacts (String firstName) {
-		
-	}
+	
 } // end MailerGUIController
