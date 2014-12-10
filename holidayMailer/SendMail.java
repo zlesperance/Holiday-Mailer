@@ -107,8 +107,8 @@ public class SendMail{
 	
 	public static void Send(String addressFrom, String pass, String addressTo, String subject,String body) {
 		 
-		final String username = "addressFrom";
-		final String password = "pass";
+		final String username = addressFrom;
+		final String password = pass;
  
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -142,8 +142,8 @@ public class SendMail{
 	
 	public static void Send(String addressFrom, String pass, String addressTo, String subject,String body,File fileAttachment) {
 		 
-		final String username = "addressFrom";
-		final String password = "pass";
+		final String username = addressFrom;
+		final String password = pass;
  
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");

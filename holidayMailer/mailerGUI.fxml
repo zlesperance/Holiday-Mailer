@@ -16,6 +16,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Edit">
               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleChangeEmail" text="Change Email" />
                   <MenuItem fx:id="newContactButton" mnemonicParsing="false" onAction="#handleNewContact" text="New Contact" />
                 <MenuItem fx:id="removeSelectedButton" disable="true" mnemonicParsing="false" onAction="#handleRemoveSelected" text="Remove Selected" />
               </items>
