@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[margin=1in]{geometry}
+\setlength{\parindent}{0pt}
 
 \begin{document}
 
@@ -16,7 +17,6 @@
 %This section provides an overview of the entire requirement document. This document describes all data, functional and behavioral requirements for software.
 
 \subsection{Goals and objectives}
-\paragraph{}
 To build a program that stores addresses of friends and relatives and allows the user to send a `Holiday Email' to people of her/his choice.
 
 %\subsection{Statement of scope}
@@ -24,12 +24,10 @@ To build a program that stores addresses of friends and relatives and allows the
 
 \subsection{Software context}
 %The software is placed in a business or product line context. Strategic issues relevant to context are discussed. The intent is for the reader to understand the 'big picture'.
-\paragraph{}
 Consumer grade product that is intuitive for use by the average computer user. The software handles their `Holiday Letters' for them electronically.
 
 \subsection{Major constraints}
 %Any business or product line constraints that will impact the manner in which the software is to be specified, designed, implemented or tested are noted here.
-\paragraph{}
 The software will need to be able to run minimally on a consumer grade machine so as to not noticeably impact performance.
 Web connection while running to allow access to the external e-mail servers.
 
@@ -78,12 +76,19 @@ Basic choose to send email to everyone who has sent you one, pick holiday email 
 Actor user \\
 Basic choose to send email to specific people, pick people, pick holiday email to send, send \\
 
+\subsection*{Use Case Diagram}
+\begin{figure}[H]
+\centering
+\includegraphics[width=110mm]{img/finalDiagrams/UseCaseDiagram.jpg}
+\caption{Use Case Diagram \label{useCase}}
+\end{figure}
+
+
 %\subsection{Special usage considerations}
 %Special requirements associated with the use of the software are presented.
 
 \section{Data Model and Description}
 %This section describes information domain for the software
-\paragraph{}
 For this project, we will be using SQLite technology for our data object interactions.
 
 \subsection{Data Description}
@@ -98,7 +103,7 @@ For this project, we will be using SQLite technology for our data object interac
 \item email (varchar(50)): The contact's email address
 \item firstName (varchar(50)): The contact's first name
 \item lastName (varchar(50)): The contact's surname
-\item lastReceivedDate (date): The date that the contact last sent a holiday letter to the user
+\item lastReceivedYear (int): The year that the contact last sent a holiday letter to the user
 \end{itemize}
 
 %\subsubsection{Relationships}
@@ -117,21 +122,19 @@ For this project, we will be using SQLite technology for our data object interac
 
 \section{Functional Model and Description}
 %A description of each major software function, along with data flow or class hierarchy (OO) is presented.
-\paragraph{}
 The Client class is the main anchor for the program. \\
 It contains references to two objects that handle all input from the user and all output to the user. \\
-The client will also contain the methods needed to delegate work to the proper objects, i.e. contact creation, contact modification, contact deletion, display
+The client will also contain the methods needed to delegate work to the proper objects, i.e. contact creation, contact modification, contact deletion, display. \\
 
-\paragraph{}
-The ContactFactory object will be used to create contacts and will become more complex as as the contacts become more complex. \\
 The DBAccess object will be used for all interaction with the database. \\
+The MailControl object track any additions and removals and save them to the database using DBAccess. \\
 The contact class is an object that represents tuples in the database. \\
-The userOut and userIn objects handle and validate the interactions the program has with the user. \\
+The userOut object handles the interactions the program has with the user. \\
 \begin{figure}[H]
 \centering
 %\includegraphics[width=170mm]{img/UML.jpg}
-\includegraphics[width=180mm]{img/UML2.jpg}
-\caption{UML Diagram of the Software \label{UML}}
+\includegraphics[width=180mm]{img/finalDiagrams/ClassDiagram.jpg}
+\caption{UML Class Diagram of the Software \label{UML}}
 \end{figure}
 
 %\subsection{Description for Function n}
@@ -174,14 +177,13 @@ The userOut and userIn objects handle and validate the interactions the program 
 
 \subsubsection{Human interface}
 %An overview of any human interfaces to be designed for the software is presented.
-\paragraph{}
 A command line menu driven interface will initially be built and if time permits and we make all the properties that we want, a graphical user interface will be build.
 
 %\subsection{Control flow description}
 %The control flow for the system is presented with reference to Section 5.0 of this document.
 
-%\section{Behavioral Model and Description}
-%A description of the behavior of the software is presented.
+\section{Behavioral Model and Description}
+A description of the behavior of the software is presented.
 
 %\subsection{Description for software behavior}
 %A detailed description of major events and states is presented in this section.
@@ -189,11 +191,42 @@ A command line menu driven interface will initially be built and if time permits
 %\subsubsection{Events}
 %A listing of events (control, items) that will cause behavioral change within the system is presented.
 
-%\subsubsection{States}
-%A listing of states (modes of behavior) that will result as a consequence of events is presented.
+\subsubsection{States}
 
-%\subsection{State Transition Diagrams}
-%Depict the overall behavior of the system.
+State: IDLE \\
+Description: Program window is open and waiting for user interaction. \\
+
+State: Add Contact \\
+Description: User has requested to add a contact, the add contact form appears, the user fills it out and submits it, returning to IDLE. \\
+
+State: Select Contact \\
+Description: User has selected one or more contacts from the table of available contacts. \\
+
+State: Remove Contact \\
+Description: User has selected to remove contact. User is alerted that this action cannot be undone. User can accept or cancel the request, either returning the program to IDLE. \\
+
+State: Add Attachment \\
+Description: User has selected one or more contacts to receive an email and has chosen to add an attachment. User can select a file on their local file system to attach. \\
+
+State: Send Mail \\
+Description: User has chosen to send emails to one or more contacts. The system sends the mail and returns to IDLE. \\
+
+
+\subsection{State Transition Diagrams}
+\begin{figure}[H]
+\centering
+\includegraphics[width=140mm]{img/finalDiagrams/StateDiagram.jpg}
+\caption{UML State Diagram of the Software \label{State}}
+\end{figure}
+
+\subsection*{Sequence Diagram}
+\begin{figure}[H]
+\centering
+\includegraphics[width=150mm]{img/finalDiagrams/SequenceDiagram.jpg}
+\caption{Sequence Diagram of the Software \label{sequence}}
+\end{figure}
+
+
 
 %\subsection{Control specification (CSPEC)}
 %Depict the manner in which control is managed by the software.
@@ -206,11 +239,14 @@ A command line menu driven interface will initially be built and if time permits
 
 \subsection{Classes of tests}
 %The types of tests to be conducted are specified, including as much detail as is possible at this stage. Emphasis here is on black- box testing.
-\paragraph{}
-We will be running JUnit tests against each iteration of our code to make sure that our program stays consistent.
+We will be running JUnit tests against each iteration of our code to make sure that our program stays consistent. \\
 
-\paragraph{}
-JUnit will be testing all CRUD (Create Update Delete) methods, database interation, data validation, etc methods.
+JUnit will be testing:
+\begin{itemize}
+\item All CRUD (Create Update Delete) methods, database interation, data validation, etc methods.
+\item The ability to send mail
+\item User input functions
+\end{itemize}
 
 %\subsection{Expected software response}
 %The expected results from testing are specified.
