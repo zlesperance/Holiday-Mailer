@@ -1,14 +1,21 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/W32TeX) (format=pdflatex 2014.5.3)  7 NOV 2014 21:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.14)  10 DEC 2014 10:00
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**srs.tex
-(./srs.tex
+**C:/Users/Zach/Documents/GitHub/Holiday-Mailer/docs/srs.tex
+(C:/Users/Zach/Documents/GitHub/Holiday-Mailer/docs/srs.tex
 LaTeX2e <2011/06/27>
-Babel <3.9k> and hyphenation patterns for 78 languages loaded.
-(d:/texlive/2013/texmf-dist/tex/latex/base/article.cls
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(d:/texlive/2013/texmf-dist/tex/latex/base/size10.clo
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -23,31 +30,31 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(d:/texlive/2013/texmf-dist/tex/latex/graphics/graphicx.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(d:/texlive/2013/texmf-dist/tex/latex/graphics/keyval.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(d:/texlive/2013/texmf-dist/tex/latex/graphics/graphics.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(d:/texlive/2013/texmf-dist/tex/latex/graphics/trig.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(d:/texlive/2013/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(d:/texlive/2013/texmf-dist/tex/latex/pdftex-def/pdftex.def
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(d:/texlive/2013/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(d:/texlive/2013/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count87
@@ -55,7 +62,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(d:/texlive/2013/texmf-dist/tex/latex/float/float.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count88
 \float@exts=\toks15
@@ -63,18 +70,18 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks16
 \@floatcapt=\box27
 )
-(d:/texlive/2013/texmf-dist/tex/latex/geometry/geometry.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(d:/texlive/2013/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-(d:/texlive/2013/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(d:/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+("E:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count89
@@ -89,23 +96,23 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen111
 \Gm@layoutvoffset=\dimen112
 \Gm@dimlist=\toks17
-) (./srs.aux)
-\openout1 = `srs.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+(C:\Users\Zach\Documents\GitHub\Holiday-Mailer\docs\srs.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
-(d:/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
+("E:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count92
 \scratchdimen=\dimen113
@@ -118,50 +125,7 @@ LaTeX Font Info:    ... okay on input line 10.
 \MPnumerator=\count96
 \makeMPintoPDFobject=\count97
 \everyMPtoPDFconversion=\toks19
-) (d:/texlive/2013/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
-
-(d:/texlive/2013/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(d:/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(d:/texlive/2013/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(d:/texlive/2013/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(d:/texlive/2013/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(d:/texlive/2013/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(d:/texlive/2013/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(d:/texlive/2013/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -197,106 +161,177 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 12.
+(Font)              <12> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 12.
+(Font)              <8> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 12.
+(Font)              <6> on input line 13.
 [1
 
-{d:/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 46--48
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 44--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--52
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--56
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 56--58
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--64
+Underfull \hbox (badness 10000) in paragraph at lines 60--62
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--68
+Underfull \hbox (badness 10000) in paragraph at lines 64--66
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--72
+Underfull \hbox (badness 10000) in paragraph at lines 68--70
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 74--76
+Underfull \hbox (badness 10000) in paragraph at lines 72--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--80
+Underfull \hbox (badness 10000) in paragraph at lines 76--78
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 98.
-(d:/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
+<img/finalDiagrams/UseCaseDiagram.jpg, id=13, 430.60875pt x 374.14781pt>
+File: img/finalDiagrams/UseCaseDiagram.jpg Graphic file (type jpg)
+
+<use img/finalDiagrams/UseCaseDiagram.jpg>
+Package pdftex.def Info: img/finalDiagrams/UseCaseDiagram.jpg used on input lin
+e 82.
+(pdftex.def)             Requested size: 312.9803pt x 271.94955pt.
+ [3 <C:/Users/Zach/Documents/GitHub/Holiday-Mailer/docs/img/finalDiagrams/UseCa
+seDiagram.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 103.
+
+
+("E:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 98.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 103.
 
-<img/db_erd.jpg, id=14, 182.18062pt x 144.54pt>
+<img/db_erd.jpg, id=17, 182.18062pt x 144.54pt>
 File: img/db_erd.jpg Graphic file (type jpg)
  <use img/db_erd.jpg>
-Package pdftex.def Info: img/db_erd.jpg used on input line 111.
+Package pdftex.def Info: img/db_erd.jpg used on input line 116.
 (pdftex.def)             Requested size: 256.0748pt x 203.19267pt.
- [3]
-<img/UML2.jpg, id=19, 592.46344pt x 446.41782pt>
-File: img/UML2.jpg Graphic file (type jpg)
- <use img/UML2.jpg>
-Package pdftex.def Info: img/UML2.jpg used on input line 133.
-(pdftex.def)             Requested size: 512.1496pt x 385.91449pt.
 
-Overfull \hbox (42.39458pt too wide) in paragraph at lines 133--134
+Underfull \hbox (badness 10000) in paragraph at lines 125--128
+
+ []
+
+<img/finalDiagrams/ClassDiagram.jpg, id=18, 799.48688pt x 965.85844pt>
+File: img/finalDiagrams/ClassDiagram.jpg Graphic file (type jpg)
+
+<use img/finalDiagrams/ClassDiagram.jpg>
+Package pdftex.def Info: img/finalDiagrams/ClassDiagram.jpg used on input line 
+136.
+(pdftex.def)             Requested size: 512.1496pt x 618.75154pt.
+
+Overfull \hbox (42.39458pt too wide) in paragraph at lines 136--137
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--135
+Underfull \hbox (badness 10000) in paragraph at lines 129--138
 
  []
 
-[4 <./img/db_erd.jpg>] [5 <./img/UML2.jpg>] (./srs.aux) ) 
-Here is how much of TeX's memory you used:
- 2053 strings out of 493308
- 29182 string characters out of 6141368
- 95645 words of memory out of 5000000
- 5502 multiletter control sequences out of 15000+600000
- 7895 words of font info for 28 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 38i,6n,32p,233b,220s stack positions out of 5000i,500n,10000p,200000b,80000s
-<d:/texlive/2013/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2013/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2013/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb><d:/texlive/2013/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb><d:/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr17.pfb><d:/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+[4 <C:/Users/Zach/Documents/GitHub/Holiday-Mailer/docs/img/db_erd.jpg>]
+[5 <C:/Users/Zach/Documents/GitHub/Holiday-Mailer/docs/img/finalDiagrams/ClassD
+iagram.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
 
-Output written on srs.pdf (5 pages, 262675 bytes).
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--204
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--207
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--213
+
+ []
+
+<img/finalDiagrams/StateDiagram.jpg, id=26, 694.595pt x 365.365pt>
+File: img/finalDiagrams/StateDiagram.jpg Graphic file (type jpg)
+
+<use img/finalDiagrams/StateDiagram.jpg>
+Package pdftex.def Info: img/finalDiagrams/StateDiagram.jpg used on input line 
+218.
+(pdftex.def)             Requested size: 398.33858pt x 209.53688pt.
+ [6]
+<img/finalDiagrams/SequenceDiagram.jpg, id=30, 663.22781pt x 202.50656pt>
+File: img/finalDiagrams/SequenceDiagram.jpg Graphic file (type jpg)
+
+<use img/finalDiagrams/SequenceDiagram.jpg>
+Package pdftex.def Info: img/finalDiagrams/SequenceDiagram.jpg used on input li
+ne 225.
+(pdftex.def)             Requested size: 426.79134pt x 130.31444pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
+
+ []
+
+[7 <C:/Users/Zach/Documents/GitHub/Holiday-Mailer/docs/img/finalDiagrams/StateD
+iagram.jpg> <C:/Users/Zach/Documents/GitHub/Holiday-Mailer/docs/img/finalDiagra
+ms/SequenceDiagram.jpg>]
+(C:\Users\Zach\Documents\GitHub\Holiday-Mailer\docs\srs.aux) ) 
+Here is how much of TeX's memory you used:
+ 1733 strings out of 493921
+ 24372 string characters out of 3144879
+ 83006 words of memory out of 3000000
+ 5038 multiletter control sequences out of 15000+200000
+ 7895 words of font info for 28 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,6n,32p,284b,218s stack positions out of 5000i,500n,10000p,200000b,50000s
+<E:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><E:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><E:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><E:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on srs.pdf (7 pages, 748932 bytes).
 PDF statistics:
- 46 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
