@@ -38,8 +38,10 @@ public class SendMailWindowController implements Initializable {
 	private List<Contact> toSend;
 	private final FileChooser fileChooser = new FileChooser();
 	private File attachment;
+	private String email;
+	private String password;
    
-	public void initialize(URL arg0, ResourceBundle arg1) {		
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		attachment = null;
 	} // end initialize
 	
@@ -59,6 +61,11 @@ public class SendMailWindowController implements Initializable {
 		toTextBox.setText(toString);
 	} // end setToParam
 	
+	public void setEmail(String email, String password) {
+		this.email = email;
+		this.password = password;
+	} // end setEmail
+	
 	@FXML
 	private void handleSend (ActionEvent event) {
 		int x = 0;
@@ -70,7 +77,7 @@ public class SendMailWindowController implements Initializable {
             	SendMail.Send(cur.getAddr(), subjectTextBox.getText(), messageTextBox.getText(), this.attachment);
             }
             x++;
-     }
+		}
 		Node source = (Node) event.getSource();
 		Stage stage = (Stage) source.getScene().getWindow();
 		stage.close();

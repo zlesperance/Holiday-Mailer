@@ -67,6 +67,8 @@ public class MailerGUIController implements Initializable {
 	private ResourceBundle resources;
 	private ObservableList<Contact> removalBuffer;
 	private ObservableList<Contact> tableData;
+	private String userEmail;
+	private String userPass;
 	
 	public void initialize (URL location, ResourceBundle resources) {
 		this.resources = resources;
@@ -265,6 +267,7 @@ public class MailerGUIController implements Initializable {
 			}
 			SendMailWindowController controller = loader.getController();
 			controller.setToParam(contacts);
+			controller.setEmail(this.userEmail, this.userPass);
 			
 			this.childWindow = new Stage();
 			this.childWindow.setTitle("Send Mail");
@@ -317,14 +320,33 @@ public class MailerGUIController implements Initializable {
 		refreshTable();
 	} // end confirmRemoval
 	
-	@FXML
-	public void handleFilter (ActionEvent event) {
-		
-	} // end handleFilter
+	public void setEmail(String email, String password) {
+		this.userEmail = email;
+		this.userPass = password;
+	} // end setEmail
 	
-	public void clearFilters () {
-		refreshTable();
-	} // end clearFilters
+	@FXML
+	private void handleChangeEmail (ActionEvent event) {
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("userWindow.fxml"), this.resources);
+			root = loader.load();
+			if (this.childWindow != null) {
+				this.childWindow.close();
+				this.childWindow = null;
+			}
+			UserWindowController controller = loader.getController();
+			controller.setParentWindow(this);
+			controller.setUserOut(this.userOut);
+			
+			this.childWindow = new Stage();
+			this.childWindow.setTitle("Change Email");
+			this.childWindow.setScene(new Scene(root));
+			this.childWindow.show();
+		} catch (IOException e) {
+			this.userOut.printError("An Error occurred when opening the new window: " + e.getMessage());
+		}
+	} // end handleChangeEmail
 	
 	
 } // end MailerGUIController
