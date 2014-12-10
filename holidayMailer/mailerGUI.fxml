@@ -52,7 +52,6 @@
       <HBox alignment="CENTER_RIGHT" layoutX="608.0" layoutY="30.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
          <children>
             <TextField fx:id="filterField" promptText="Filter Contacts by Name, Email, or Last Received..." HBox.hgrow="ALWAYS" />
-            <Button fx:id="clearFilterButton" mnemonicParsing="false" text="Clear Filters" />
          </children>
       </HBox>
    </children>
