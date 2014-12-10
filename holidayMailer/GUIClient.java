@@ -1,5 +1,6 @@
 package holidayMailer;
 
+import java.io.File;
 import java.sql.SQLException;
 
 import javafx.application.Application;
@@ -46,6 +47,7 @@ public class GUIClient extends Application {
 	} // end start
 
 	public static void main(String[] args) {
+		
 		userOut = new UserOut();
 		try {
 			mailControl = new MailControl (userOut);
