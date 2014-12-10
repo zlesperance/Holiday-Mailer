@@ -1,10 +1,12 @@
 package holidayMailer;
 
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DBAccess {
 	private Connection connection = null;
+	private boolean initialized = false;
 	
 	public DBAccess () throws ClassNotFoundException, SQLException {
 		Class.forName("org.sqlite.JDBC");
@@ -62,6 +64,7 @@ public class DBAccess {
 	} // end delete
 	
 	public ArrayList<Contact> getAllContacts () throws SQLException {
+		this.open();
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
 		String sql = "SELECT firstName, lastName, email, lastReceivedYear FROM contacts;";
@@ -77,6 +80,7 @@ public class DBAccess {
 	} // end getAllContacts
 	
 	public ArrayList<Contact> getPreviousSenders (int yearOffset) throws SQLException {
+		this.open();
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
 		String sql = "SELECT"
@@ -100,6 +104,7 @@ public class DBAccess {
 	} // end getPreviousSenders
 	
 	public ArrayList<Contact> getPreviousSenders () throws SQLException {
+		this.open();
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
 		String sql = "SELECT"
@@ -121,6 +126,7 @@ public class DBAccess {
 	} // end getPreviousSenders
 	
 	public ArrayList<Contact> getContactsByName (String firstName, String lastName) throws SQLException {
+		this.open();
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
 		String sql = "SELECT"
@@ -145,6 +151,7 @@ public class DBAccess {
 	} // end getContactsByName
 	
 	public ArrayList<Contact> getContactsByFirstName (String firstName) throws SQLException {
+		this.open();
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
 		String sql = "SELECT"
@@ -167,6 +174,7 @@ public class DBAccess {
 	} // end getContactsByFirstName
 	
 	public ArrayList<Contact> getContactsByLastName (String lastName) throws SQLException {
+		this.open();
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
 		String sql = "SELECT"
@@ -192,8 +200,32 @@ public class DBAccess {
 		if (this.connection != null) {
 			return;
 		}
+		
+		File db = new File("holidayMailer.db");
+		if (this.initialized == false && db.exists()) {
+			this.initialized = true;
+		}
+		
 		this.connection = DriverManager.getConnection("jdbc:sqlite:holidayMailer.db");
+		
+		if (this.initialized == false) {
+			this.setup();
+			this.initialized = true;
+		}
 	} // end open
+	
+	private void setup() throws SQLException {
+		String sql = "CREATE TABLE contacts ("
+				+ " email varchar(50) not null,"
+				+ "	firstName varchar(50) not null,"
+				+ "	lastName varchar(50) not null,"
+				+ "	lastReceivedYear int null,"
+				+ "	CONSTRAINT pk_contacts PRIMARY KEY (email)"
+				+ ");";
+
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		statement.executeUpdate();
+	} // end setup
 	
 	public void close() throws SQLException {
 		if (this.connection != null) {
