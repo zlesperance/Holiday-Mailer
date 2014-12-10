@@ -1,6 +1,7 @@
 package holidayMailer;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
@@ -28,8 +29,9 @@ public class SendMailWindowController implements Initializable {
 	
 	@FXML
 	Button sendButton;
-
-	@Override
+   
+	private List<Contact> toSend;
+   
 	public void initialize(URL arg0, ResourceBundle arg1) {		
 	} // end initialize
 	
@@ -45,12 +47,21 @@ public class SendMailWindowController implements Initializable {
 			toString += contact.toString();
 		}
 		
+		toSend = contacts;
 		toTextBox.setText(toString);
 	} // end setToParam
 	
 	@FXML
 	private void handleSend (ActionEvent event) {
-		
+		int x = 0;
+		while (x < toSend.size()) {
+            Contact cur = toSend.get(x);
+            SendMail.Send(cur.getAddr(),subjectTextBox.getText(),messageTextBox.getText());
+            x++;
+     }
+		Node source = (Node) event.getSource();
+		Stage stage = (Stage) source.getScene().getWindow();
+		stage.close();
 	} // end handleSend
 	
 	@FXML

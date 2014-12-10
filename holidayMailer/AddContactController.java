@@ -26,7 +26,6 @@ public class AddContactController implements Initializable, ChildWindow {
 	private UserOut userOut;
 	private MailerGUIController parentWindow;
 	
-	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	} // end initialize

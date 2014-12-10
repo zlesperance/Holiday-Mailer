@@ -20,8 +20,7 @@ public class AlertWindowController implements Initializable {
 	
 	@FXML
 	Button okButton;
-
-	@Override
+   
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		detailsLabel.setText("");
 	} // end initialize

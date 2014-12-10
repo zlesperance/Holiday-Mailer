@@ -6,10 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class MailerGUIController implements Initializable {
 	@FXML
@@ -38,12 +41,11 @@ public class MailerGUIController implements Initializable {
 	
 	private UserOut userOut;
 	private UserIn userIn;
-	private DBAccess dbAccess;
+	private MailControl mailControl;
 	private Stage childWindow;
 	private ResourceBundle resources;
 	private ObservableList<Contact> removalBuffer;
 	
-	@Override
 	public void initialize (URL location, ResourceBundle resources) {
 		this.resources = resources;
 		initializeTable();
@@ -54,6 +56,34 @@ public class MailerGUIController implements Initializable {
 	
 	private void initializeTable () {
 		//ObservableList<TableColumn<Contact, ?>> columns = contactsTable.getColumns();
+		// Set up context menu:
+		contactsTable.setRowFactory(
+			new Callback<TableView<Contact>, TableRow<Contact>>() {
+				public TableRow<Contact> call(TableView<Contact> tableView) {
+				final TableRow<Contact> row = new TableRow<Contact>();
+				final ContextMenu rowMenu = new ContextMenu();
+				MenuItem editItem = new MenuItem("Edit");
+				editItem.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent event) {
+				    	userOut.printError("Edit Menu Not Implemented");
+				    }
+				});
+				MenuItem removeItem = new MenuItem("Delete");
+				removeItem.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent event) {
+						contactsTable.getItems().remove(row.getItem());
+					}
+				});
+				rowMenu.getItems().addAll(editItem, removeItem);
+				
+				// only display context menu for non-null items:
+				row.contextMenuProperty().bind(
+					Bindings.when(Bindings.isNotNull(row.itemProperty()))
+						.then(rowMenu)
+						.otherwise((ContextMenu)null));
+					return row;
+				}
+		});
 		
 		TableColumn<Contact,String> firstNameCol = new TableColumn<Contact,String>("First Name");
 		firstNameCol.setPrefWidth(154.0);
@@ -88,35 +118,33 @@ public class MailerGUIController implements Initializable {
 		if (this.userOut == null) {
 			return;
 		}
-		if (this.dbAccess == null) {
+		if (this.mailControl == null) {
 			this.userOut.printError("Error: Database Not Found");
 			return;
 		}
 		
 		ObservableList<Contact> data = FXCollections.observableArrayList();
-		try {
-			ArrayList<Contact> contacts = this.dbAccess.getAllContacts();
-			for (Contact contact : contacts) {
-				data.add(contact);
-			}
-		} catch (SQLException e) {
-			this.userOut.printError("Error: Could not query users: " + e.getMessage());
+		
+		ArrayList<Contact> contacts = this.mailControl.getContacts();
+		for (Contact contact : contacts) {
+			data.add(contact);
 		}
 		
 		contactsTable.setItems(data);
 	} // end refreshTable
 	
 	public void addContactToTable (Contact contact) {
-		try {
-			this.dbAccess.create(contact);
+		
+		boolean successful = this.mailControl.addContact(contact);
+		if(successful) {
 			contactsTable.getItems().add(contact);
-		} catch (SQLException e) {
-			this.userOut.printError("An Error Occurred when saving the contact to the database");
-		}
+		}//if added
+		
 	} // end addContactToTable
-	
-	public void initDB (DBAccess dbAccess) {
-		this.dbAccess = dbAccess;
+		
+	public void initDB (MailControl mc) {
+		
+		this.mailControl = mc;
 	} // end initDB
 	
 	public void initUserOut (UserOut userOut) {
@@ -129,13 +157,12 @@ public class MailerGUIController implements Initializable {
 	
 	@FXML
 	private void handleQuitAction (ActionEvent event) {
-		if (this.dbAccess != null) {
-			try {
-				this.dbAccess.close();
-			} catch (SQLException e) {
-				this.userOut.printError("An Error Occurred while closing the database: " + e.getMessage());
-			}
-		}
+		boolean close = true;
+		try {
+			this.mailControl.commitChanges(close);
+		} catch (SQLException e) {
+			this.userOut.printError("An Error Occurred while closing the database: " + e.getMessage());
+		}//try/catch
 		
 		Stage stage = (Stage) mailerMenuBar.getScene().getWindow();
 		stage.close();
@@ -260,14 +287,24 @@ public class MailerGUIController implements Initializable {
 			return;
 		
 		for (Contact contact : this.removalBuffer) {
-			try {
-				this.dbAccess.delete(contact);
-				
-			} catch (SQLException e) {
-				this.userOut.printError("An error occurred when deleting a user", e.getMessage());
-			}
+			
+			this.mailControl.deleteContact(contact);
 		}
+		
 		this.removalBuffer = null;
 		refreshTable();
+	} // end confirmRemoval
+	
+	@FXML
+	public void handleFilter (ActionEvent event) {
+		
+	} // end handleFilter
+	
+	public void clearFilters () {
+		refreshTable();
+	} // end clearFilters
+	
+	public void filterContacts (String firstName) {
+		
 	}
 } // end MailerGUIController
