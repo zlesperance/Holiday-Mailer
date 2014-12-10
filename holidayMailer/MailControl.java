@@ -5,7 +5,6 @@ import java.util.*;
 
 public class MailControl {
 
-	private UserIn ui;
 	private UserOut uo;
 	private ArrayList<Contact> contactList;
 	private ArrayList<Contact> updatedContacts;
@@ -13,17 +12,20 @@ public class MailControl {
 	private ArrayList<Contact> removedContacts;
 	private DBAccess dba;
 	
-	public MailControl (UserIn ui, UserOut uo, DBAccess dba) throws SQLException {
-		
-		this.ui = ui;
+	public MailControl (UserOut uo) throws SQLException {
+				
 		this.uo = uo;
-		this.dba = dba;	
+		
 		try {
+			this.dba = new DBAccess();
 			this.contactList = dba.getAllContacts();
 		} catch (SQLException e) {
-			this.uo.printString("An error occured querying the database.");
-		}//try/catch
-		
+			this.uo.printError("An error occured querying the database.");
+		} catch(Exception e) {
+			this.uo.printError("An Error Occurred when connecting to the database: " + e.getMessage());
+			return;
+		}//try/catch/catch
+				
 	}//Constructor
 	
 	public ArrayList<Contact> getContacts() {
@@ -46,7 +48,7 @@ public class MailControl {
 			try {
 				dba.create(contact);
 			} catch (SQLException e) {
-				uo.printString("An error occured creating a new contact in the database.");
+				uo.printError("An error occured creating a new contact in the database.");
 				
 			}//try/catch
 			
@@ -60,7 +62,7 @@ public class MailControl {
 			try {
 				dba.delete(contact);
 			} catch (SQLException e) {
-				uo.printString("An error occured deleting a contact from the database.");
+				uo.printError("An error occured deleting a contact from the database.");
 			}
 		}//for contact in updated
 		
@@ -73,7 +75,7 @@ public class MailControl {
 				dba.update(contact);
 				
 			} catch (SQLException e) {
-				uo.printString("An error occured updating the database");
+				uo.printError("An error occured updating the database");
 				
 			}//try/catch
 			
@@ -93,7 +95,7 @@ public class MailControl {
 		for(Contact c : contactList) {
 			
 			if (c.equals(con)) {
-				uo.printString("Contact already in database.");
+				uo.printError("Contact already in database.");
 				exists = true;
 				break;
 			}//if c==con
@@ -126,7 +128,7 @@ public class MailControl {
 		
 		if (!exists){
 			
-			uo.printString("Contact not in database");
+			uo.printError("Contact not in database");
 			
 		}//if not in database		
 		
