@@ -73,11 +73,12 @@ public class SendMail{
  
 		try {
  
-			Message message = new MimeMessage(session);
+			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
 			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(addressTo));
 			message.setSubject(subject);
-
+			//message.addAttachment(fileAttachment.getName(),fileAttachment)
+			
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
 	
 		    //fill message
@@ -86,7 +87,7 @@ public class SendMail{
 		    Multipart multipart = new MimeMultipart();
 		    multipart.addBodyPart(messageBodyPart);
 			messageBodyPart = new MimeBodyPart();
-		    DataSource source =  (DataSource) fileAttachment;
+		    FileDataSource source =  new FileDataSource(fileAttachment.getPath());
 		    messageBodyPart.setDataHandler(new DataHandler((javax.activation.DataSource) source));
 		    messageBodyPart.setFileName(fileAttachment.getName());
 		    multipart.addBodyPart(messageBodyPart);
@@ -172,7 +173,7 @@ public class SendMail{
 		    Multipart multipart = new MimeMultipart();
 		    multipart.addBodyPart(messageBodyPart);
 			messageBodyPart = new MimeBodyPart();
-		    DataSource source = (DataSource) fileAttachment;
+		    FileDataSource source =  new FileDataSource(fileAttachment.getPath());
 		    messageBodyPart.setDataHandler(new DataHandler((javax.activation.DataSource) source));
 		    messageBodyPart.setFileName(fileAttachment.getName());
 		    multipart.addBodyPart(messageBodyPart);
